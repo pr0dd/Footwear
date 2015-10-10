@@ -1,0 +1,105 @@
+//Mixins:
+
+// Absolute Positioned
+// Pass in the desired location of your target element to produce all the necessary positioning code.
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+
+//Breakpoints
+
+@mixin bp-xxlarge {
+  @media only screen and (min-width: 1500px) {
+    @content;
+  }
+}
+
+@mixin bp-xlarge {
+  @media only screen and (min-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin bp-large {
+  @media only screen and (min-width: 990px) {
+    @content;
+  }
+}
+
+@mixin bp-xmedium {
+  @media only screen and (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (min-width: 601px) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (min-width: 400px) {
+    @content;
+  }
+}
+
+//Transitions
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+//Transform
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+//Cross browser opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//Clearfix tech using Placeholder selector %
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// //Usage
+// .container-with-floated-children {
+//   @extend %clearfix;
+// }
+
+//Cross browser border-radius
+@mixin border-radius($radius: 5px) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//Unobtrusive custom box shadow:
+@mixin box-shadow {
+  box-shadow:0 2px 4px 0 rgba(0,0,0,0.2),0 2px 10px 0 rgba(0,0,0,0.19);
+}

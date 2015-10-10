@@ -1,0 +1,28 @@
+@import "mixins.scss";
+
+/*STICKY FOOTER*/
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -80px;
+	@include bp-medium {margin-bottom:-80px;} 
+}
+footer, .push {
+	height: 80px;
+	@include bp-medium {height:80px;}  
+}
+
+/*GENERIC STYLES*/
+body { overflow-x:hidden; }
+a { text-decoration: none; }
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+p { font-size:80%; }
+.container {
+	min-width:300px;
+	@include bp-medium {width:94%;}
+	@include bp-large {width:60%;}
+	outline: 1px solid black; // delete;
+}
