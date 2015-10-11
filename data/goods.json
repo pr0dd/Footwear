@@ -1,0 +1,44 @@
+[
+	{
+		"category":"men",
+		"brand": "Ecco",
+		"season": "winter",
+		"type": "shoes",
+		"name": "boyle-101",
+		"description": "Ideal for early winter daily walks",
+		"promotion": "null",
+		"price": 138,
+		"sold": 3,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
+	},
+	{
+		"category":"women",
+		"brand": "Ecco",
+		"season": "winter",
+		"type": "shoes",
+		"name": "boyle-102",
+		"description": "Ideal for early winter daily walks",
+		"promotion": "null",
+		"price": 138,
+		"sold": 3,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
+	},
+	{
+		"category":"kids",
+		"brand": "Ecco",
+		"season": "winter",
+		"type": "shoes",
+		"name": "boyle-103",
+		"description": "Ideal for early winter daily walks",
+		"promotion": "null",
+		"price": 138,
+		"sold": 3,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
+	}
+]

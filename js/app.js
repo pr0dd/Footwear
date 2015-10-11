@@ -11,10 +11,23 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: "partials/shop.html"	
 	})
 	.otherwise({
-		templateUrl: "partials/frontpage.html"
+		redirectTo: "/"
 	});
 }]);
 
-app.controller("mainCtrl", ["$scope", function($scope){
+//Constants:
+app.constant("baseUrl", "data/goods.json");
 
+//Main controller:
+app.controller("mainCtrl", ["$scope","$http","baseUrl", function($scope, $http, baseUrl){
+	//get products from server:
+	$scope.data = {};
+	$http.get(baseUrl)
+		.success(function(data){
+			$scope.data.products = data;
+		})
+		.error(function(error){
+			$scope.data.error
+		});
 }]);
+
