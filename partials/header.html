@@ -1,3 +1,10 @@
 <div class="container">
 	<p><b>HEADER</b></p>
+	<nav class="col">
+		<ul>
+			<li set-active ng-click="selectCategory()">All</li>
+			<li set-active ng-repeat="item in data.products | unique:'category'" ng-click="selectCategory(item)">{{item}}</li>
+		</ul>
+	</nav>
+
 </div>

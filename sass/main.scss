@@ -26,3 +26,26 @@ p { font-size:80%; }
 	@include bp-large {width:60%;}
 	outline: 1px solid black; // delete;
 }
+
+/*HEADER*/
+header {
+	background-color: #eee;
+	text-align: center;
+	nav {
+		ul {
+			@extend %clearfix;
+			li {
+				position: relative;	
+				float: left;
+				padding: 10px;
+				&.active {
+					background-color: lightblue;
+				}
+				&:hover {
+					color: lightcoral	;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

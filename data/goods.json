@@ -1,6 +1,6 @@
 [
 	{
-		"category":"men",
+		"category":"Men",
 		"brand": "Ecco",
 		"season": "winter",
 		"type": "shoes",
@@ -14,7 +14,7 @@
 		"available": true
 	},
 	{
-		"category":"women",
+		"category":"Women",
 		"brand": "Ecco",
 		"season": "winter",
 		"type": "shoes",
@@ -28,7 +28,7 @@
 		"available": true
 	},
 	{
-		"category":"kids",
+		"category":"Kids",
 		"brand": "Ecco",
 		"season": "winter",
 		"type": "shoes",
