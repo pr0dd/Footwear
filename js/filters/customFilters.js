@@ -1,14 +1,19 @@
 ﻿angular.module("customFilters", [])
 	.filter("unique", function() {
-		return function(data, propertyName) {
+		return function(data, propertyName, saveAsObj) {
 			if( angular.isArray(data) && angular.isString(propertyName) ) {
 				var customData = [];
 				var keys = {};
 				for(var i = 0; i<data.length; i++) {
 					var val = data[i][propertyName];
 					if( angular.isUndefined(keys[val]) ) {
-						keys[val] = true;
-						customData.push(val);
+						if(angular.isUndefined(saveAsObj)) {
+							keys[val] = true;
+							customData.push(val);
+						} else {
+							keys[val] = true;
+							customData.push(data[i]);
+						}
 					}
 				}
 				return customData;

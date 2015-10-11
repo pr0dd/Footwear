@@ -32,16 +32,35 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		.error(function(error){
 			$scope.data.error
 		});
-	//manage categories:
-	var selectItem = null;
+		
+	//FILTERS:
+		//Define default variables:
+	var productCategory = null;
+	var productType = [];
+		//Selecting functions:
 	$scope.selectCategory = function(newItem){
-		selectItem = newItem;
+		productCategory = newItem;
 		$location.path("/shop");
 	}
-	// //apply 'active' class:
-	// $scope.setClass = function(item){
-	// 	return item == selectItem ? activeClass : "";
-	// }
+	$scope.toggleTypeSelect = function(newItem){
+		if(productType.indexOf(newItem)==-1) {
+			productType.push(newItem);
+		} else {
+			productType.splice(productType.indexOf(newItem),1);
+		}
+	}
+		//Filtering functions:
+	$scope.categoryFilterFn = function(item){
+		return productCategory == null || item.category == productCategory;
+	}
+	$scope.typeFilterFn = function(item){
+		var selector = false;
+		for(var i=0; i<productType.length; i++){
+			if(productType[i] == item.type) {selector = true;}
+		}
+		return productType.length == 0 || selector == true;
+	}
+
 }]);
 
 

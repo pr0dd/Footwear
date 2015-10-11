@@ -1,4 +1,19 @@
-<div class="container">
-	<p><b>SHOP</b></p>
-	<a href="#/main">Go back</a>
+<div class="container shop">
+	<div class="col">
+		<p><b>SHOP</b></p>
+		<a href="#/main">Go back</a>
+	</div>
+	<div class="col l3 filters">
+		<p ng-repeat="item in data.products | unique:'type':'true' | filter:categoryFilterFn">
+			<input type="checkbox" id="{{item.id}}" ng-model="item.active" ng-click="toggleTypeSelect(item.type)">
+			<label for="{{item.id}}">{{item.type}}</label>
+		</p>
+	</div>
+	<div class="col l9">
+		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:typeFilterFn">
+			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
+			<span>{{item.description}}</span>
+			<button ng-click="addToCart(item)">Add to cart</button>
+		</div>
+	</div>
 </div>
