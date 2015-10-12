@@ -40,6 +40,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		//Selecting functions:
 	$scope.selectCategory = function(newItem){
 		productCategory = newItem;
+		$scope.refreshFilters();
 		$location.path("/shop");
 	}
 	$scope.toggleTypeSelect = function(newItem){
@@ -49,16 +50,18 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 			productType.splice(productType.indexOf(newItem),1);
 		}
 	}
+	$scope.refreshFilters = function(){
+		for(var i = 0; i < $scope.data.products.length; i++){
+			$scope.data.products[i].active = false;
+		}
+		productType.length = 0;
+	}
 		//Filtering functions:
 	$scope.categoryFilterFn = function(item){
 		return productCategory == null || item.category == productCategory;
 	}
 	$scope.typeFilterFn = function(item){
-		var selector = false;
-		for(var i=0; i<productType.length; i++){
-			if(productType[i] == item.type) {selector = true;}
-		}
-		return productType.length == 0 || selector == true;
+		return productType.length == 0 || productType.indexOf(item.type) != -1;
 	}
 
 }]);
