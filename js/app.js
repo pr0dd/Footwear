@@ -36,32 +36,40 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	//FILTERS:
 		//Define default variables:
 	var productCategory = null;
-	var productType = [];
+	$scope.productType = [];
+	$scope.productBrand = [];
+	$scope.typeVals = []; //ng-model values for type filter:
+	$scope.brandVals = []; //ng-model values for brand filter:
 		//Selecting functions:
 	$scope.selectCategory = function(newItem){
 		productCategory = newItem;
 		$scope.refreshFilters();
 		$location.path("/shop");
 	}
-	$scope.toggleTypeSelect = function(newItem){
-		if(productType.indexOf(newItem)==-1) {
-			productType.push(newItem);
+	$scope.toggleFilter = function(newItem, source){
+		if(source.indexOf(newItem)==-1) {
+			source.push(newItem);
 		} else {
-			productType.splice(productType.indexOf(newItem),1);
+			source.splice(source.indexOf(newItem),1);
 		}
-	}
-	$scope.refreshFilters = function(){
-		for(var i = 0; i < $scope.data.products.length; i++){
-			$scope.data.products[i].active = false;
-		}
-		productType.length = 0;
 	}
 		//Filtering functions:
 	$scope.categoryFilterFn = function(item){
 		return productCategory == null || item.category == productCategory;
 	}
 	$scope.typeFilterFn = function(item){
-		return productType.length == 0 || productType.indexOf(item.type) != -1;
+		return $scope.productType.length == 0 || $scope.productType.indexOf(item.type) != -1;
+	}
+	$scope.brandFilterFn = function(item){
+		return $scope.productBrand.length == 0 || $scope.productBrand.indexOf(item.brand) != -1;
+	}
+		//Refresh filters:
+	$scope.refreshFilters = function(){
+		$scope.productType.length = 0;
+		$scope.productBrand.length = 0;
+		$scope.typeVals.length = 0;
+		$scope.brandVals.length = 0;
+
 	}
 
 }]);

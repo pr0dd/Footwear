@@ -12,13 +12,12 @@
 		"sold": 3,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
-		"available": true,
-		"active": false
+		"available": true
 	},
 	{
 		"id": "m02",
 		"category":"Men",
-		"brand": "Ecco",
+		"brand": "Sketchers",
 		"season": "winter",
 		"type": "shoes",
 		"name": "boyle-202",
@@ -28,15 +27,14 @@
 		"sold": 3,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
-		"available": true,
-		"active": false
+		"available": true
 	},
 	{
 		"id": "w01",
 		"category":"Women",
 		"brand": "Ecco",
 		"season": "winter",
-		"type": "high shoes",
+		"type": "shoes",
 		"name": "boyle-102",
 		"description": "Ideal for early winter daily walks",
 		"promotion": "null",
@@ -44,13 +42,42 @@
 		"sold": 3,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
-		"available": true,
-		"active": false
+		"available": true
+	},
+	{
+		"id": "w02",
+		"category":"Women",
+		"brand": "Ecco",
+		"season": "winter",
+		"type": "high shoes",
+		"name": "boyle-105",
+		"description": "Ideal for early winter daily walkssss",
+		"promotion": "null",
+		"price": 148,
+		"sold": 3,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
+	},
+	{
+		"id": "w03",
+		"category":"Women",
+		"brand": "Braska",
+		"season": "winter",
+		"type": "boots",
+		"name": "boyle-105",
+		"description": "Ideal for early winter daily walkszzssss",
+		"promotion": "null",
+		"price": 149,
+		"sold": 3,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
 	},
 	{
 		"id": "k01",
 		"category":"Kids",
-		"brand": "Ecco",
+		"brand": "Braska",
 		"season": "winter",
 		"type": "boots",
 		"name": "boyle-103",
@@ -61,6 +88,9 @@
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
 		"available": true,
-		"active": false
+		"filters": {
+			"type": false,
+			"brand": false
+		}
 	}
 ]
