@@ -23,11 +23,26 @@ app.constant("activeClass", "active");
 
 //Main controller:
 app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", function($scope, $http, baseUrl, activeClass, $location){
+	//Define get function for 'price' filter:
+	var getPrice = function(max){
+		var prices = [];
+		for(var i = 0; i < $scope.data.products.length; i++){
+			var val = $scope.data.products[i].price;
+			prices.push(val);
+		}
+		return angular.isDefined(max) ? Math.max.apply(null,prices) : Math.min.apply(null,prices);
+	}
+
 	//get products from server:
 	$scope.data = {};
 	$http.get(baseUrl)
 		.success(function(data){
 			$scope.data.products = data;
+			//Define default variables which require $scope.data.products:
+			$scope.data.min = getPrice(); //get dynamic min value for price filter's ng-model directive;
+			$scope.data.max = getPrice(true); //get dynamic max value;
+			$scope.min = getPrice(); //get static min value for range input;
+			$scope.max = getPrice(true); //get static max value;
 		})
 		.error(function(error){
 			$scope.data.error
@@ -54,6 +69,12 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		}
 	}
 		//Filtering functions:
+	$scope.minPriceFilterFn = function(item){
+		return item.price >= Number($scope.data.min);
+	}
+	$scope.maxPriceFilterFn = function(item){
+		return item.price <= Number($scope.data.max);
+	}
 	$scope.categoryFilterFn = function(item){
 		return productCategory == null || item.category == productCategory;
 	}

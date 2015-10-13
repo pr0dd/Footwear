@@ -4,6 +4,18 @@
 		<a href="#/main">Go back</a>
 	</div>
 	<div class="col l3 filters">
+		<div class="price">
+			<p>
+				Min price:
+				<input type="range" ng-model="data.min" min="{{min}}" max="{{max}}">&nbsp
+				<input number-only type="text" ng-model="data.min"> {{data.min}}
+			</p>
+			<p>
+				Max price:
+				<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.max">&nbsp
+				<input number-only type="text" ng-model="data.max"> {{data.max}}
+			</p>
+		</div>
 		<div class="type">
 		<p>Types:</p>
 		<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'type'">
@@ -21,7 +33,7 @@
 		</div>
 	</div>
 	<div class="col l9">
-		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:typeFilterFn | filter: brandFilterFn">
+		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn">
 			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
 			<span>{{item.description}}</span>
 			<button ng-click="addToCart(item)">Add to cart</button>
