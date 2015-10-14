@@ -7,7 +7,7 @@
 		<div class="price">
 			<p>
 				Min price:
-				<input type="range" ng-model="data.min" min="{{min}}" max="{{max}}">&nbsp
+				<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.min">&nbsp
 				<input number-only type="text" ng-model="data.min"> {{data.min}}
 			</p>
 			<p>
@@ -31,9 +31,18 @@
 			<label for="{{item + $index + 1}}">{{item}}</label>
 		</p>
 		</div>
+
+		<div class="size">
+		<p>Size:</p>
+		<p ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size'">
+			<input type="checkbox" id="{{'size' + item}}" ng-model="sizeVals[$index]" ng-click="toggleFilter(item, productSize)">
+			<label for="{{'size' + item}}">{{item}}</label>
+		</p>
+		</div>
+
 	</div>
 	<div class="col l9">
-		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn">
+		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn">
 			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
 			<span>{{item.description}}</span>
 			<button ng-click="addToCart(item)">Add to cart</button>

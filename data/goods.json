@@ -10,7 +10,7 @@
 		"promotion": "null",
 		"price": 138,
 		"sold": 3,
-		"size": [41, 42, 43],
+		"size": [41, 42, 43, 45],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
@@ -25,7 +25,7 @@
 		"promotion": "null",
 		"price": 139,
 		"sold": 3,
-		"size": [41, 42, 43],
+		"size": [41, 42, 43, 46],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
@@ -83,7 +83,7 @@
 		"name": "boyle-103",
 		"description": "Ideal for early winter daily walks",
 		"promotion": "null",
-		"price": 138,
+		"price": 132,
 		"sold": 3,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],

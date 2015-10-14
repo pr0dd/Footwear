@@ -49,4 +49,32 @@
 				return data;
 			}
 		}
+	})
+	.filter("arrayValues", function(){
+		return function(data, property){
+			if( angular.isArray(data) && angular.isString(property) ) {
+				var sort = function(array){
+					var values = [];
+					var keys = {};
+					for(var i = 0; i < array.length; i++){
+						var val = array[i];
+						if( angular.isUndefined(keys[val]) ) {
+							keys[val] = true;
+							values.push(val);
+						}
+					}
+					return values;
+				}
+				var results = [];
+				for(var i = 0; i < data.length; i++){
+					var val = data[i][property];
+					if( angular.isArray(val) ){
+						results.push.apply(results, val);
+					}
+				}
+				return sort(results);
+			} else {
+				return data;
+			}
+		}
 	});
