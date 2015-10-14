@@ -29,9 +29,11 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.productType = [];
 	$scope.productBrand = [];
 	$scope.productSize = [];	
+	$scope.productSeason = [];	
 	$scope.typeVals = []; //ng-model values for type filter:
 	$scope.brandVals = []; //ng-model values for brand filter:
 	$scope.sizeVals = []; //ng-model values for size filter:
+	$scope.seasonVals = []; //ng-model values for size filter:
 
 	//Initialization function for 'price' filter:
 	var initPrices = function(){
@@ -124,15 +126,20 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.sizeFilterFn = function(item){
 		return $scope.productSize.length == 0 || isInside(item.size, $scope.productSize);
 	}
+	$scope.seasonFilterFn = function(item){
+		return $scope.productSeason.length == 0 || $scope.productSeason.indexOf(item.season) != -1;
+	}
 
 		//Refresh filters:
 	$scope.refreshFilters = function(){
 		$scope.productType.length = 0;
 		$scope.productBrand.length = 0;
 		$scope.productSize.length = 0;
+		$scope.productSeason.length = 0;
 		$scope.typeVals.length = 0;
 		$scope.brandVals.length = 0;
 		$scope.sizeVals.length = 0;
+		$scope.seasonVals.length = 0;
 	}
 
 }]);

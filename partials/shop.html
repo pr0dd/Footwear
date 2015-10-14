@@ -32,6 +32,14 @@
 		</p>
 		</div>
 
+		<div class="season">
+		<p>Size:</p>
+		<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'season'">
+			<input type="checkbox" id="{{'season'+item}}" ng-model="seasonVals[$index]" ng-click="toggleFilter(item, productSeason)">
+			<label for="{{'season'+item}}">{{item}}</label>
+		</p>
+		</div>
+
 		<div class="size">
 		<p>Size:</p>
 		<p ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size'">
@@ -42,7 +50,7 @@
 
 	</div>
 	<div class="col l9">
-		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn">
+		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn">
 			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
 			<span>{{item.description}}</span>
 			<button ng-click="addToCart(item)">Add to cart</button>
