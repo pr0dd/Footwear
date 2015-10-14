@@ -4,6 +4,11 @@
 		<a href="#/main">Go back</a>
 	</div>
 	<div class="col l3 filters">
+		<div class="view-options">
+			<p>View options:</p>
+			<button ng-click="setViewClass('tile')"><i class="material-icons">view_module</i></button>
+			<button ng-click="setViewClass('list')"><i class="material-icons">view_list</i></button>			
+		</div>
 		<div class="price">
 			<p>
 				Min price:
@@ -50,7 +55,7 @@
 
 	</div>
 	<div class="col l9">
-		<div class="product" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn">
+		<div ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn">
 			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
 			<span>{{item.description}}</span>
 			<button ng-click="addToCart(item)">Add to cart</button>

@@ -34,6 +34,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.brandVals = []; //ng-model values for brand filter:
 	$scope.sizeVals = []; //ng-model values for size filter:
 	$scope.seasonVals = []; //ng-model values for size filter:
+	$scope.viewClass = "tile";
 
 	//Initialization function for 'price' filter:
 	var initPrices = function(){
@@ -107,6 +108,9 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 			source.splice(source.indexOf(newItem),1);
 		}
 	}
+	$scope.setViewClass = function(value) {
+		$scope.viewClass = value;
+	}
 		//Filtering functions:
 	$scope.minPriceFilterFn = function(item){
 		return item.price >= Number($scope.data.min);
@@ -136,6 +140,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		$scope.productBrand.length = 0;
 		$scope.productSize.length = 0;
 		$scope.productSeason.length = 0;
+
 		$scope.typeVals.length = 0;
 		$scope.brandVals.length = 0;
 		$scope.sizeVals.length = 0;
