@@ -12,6 +12,10 @@ app.config(["$routeProvider", function($routeProvider){
 	.when("/shop",{
 		templateUrl: "partials/shop.html"	
 	})
+	.when("/product/:id",{
+		templateUrl: "partials/product.html",
+		controller: "productCtrl"	
+	})
 	.otherwise({
 		redirectTo: "/"
 	});
@@ -26,14 +30,15 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	
 	//Define default variables:
 	var productCategory = null;
+	$scope.currentProduct = null;
 	$scope.productType = [];
 	$scope.productBrand = [];
 	$scope.productSize = [];	
 	$scope.productSeason = [];	
-	$scope.typeVals = []; //ng-model values for type filter:
-	$scope.brandVals = []; //ng-model values for brand filter:
-	$scope.sizeVals = []; //ng-model values for size filter:
-	$scope.seasonVals = []; //ng-model values for size filter:
+	$scope.typeVals = []; //ng-model values container for type filter:
+	$scope.brandVals = []; //ng-model values container for brand filter:
+	$scope.sizeVals = []; //ng-model values container for size filter:
+	$scope.seasonVals = []; //ng-model values container for season filter:
 	$scope.viewClass = "tile";
 
 	//Initialization function for 'price' filter:
@@ -96,8 +101,8 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		//Selecting functions:
 	$scope.selectCategory = function(newItem){
 		productCategory = newItem;
+		//Update values of 'price' filter and refresh other filters at each change of category;
 		$scope.refreshFilters();
-		//Update values of 'price' filter at each change of category;
 		initPrices();
 		$location.path("/shop");
 	}
@@ -146,7 +151,26 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		$scope.sizeVals.length = 0;
 		$scope.seasonVals.length = 0;
 	}
+	//Move to product details:
+	$scope.viewDetails = function(item){
+		$scope.currentProduct = item;
+		$location.path("/product/" + item.id);
+	}
+}]);
 
+app.controller("productCtrl", ["$scope", "$routeParams", function($scope, $routeParams){
+	var id = $routeParams['id'];
+	var getProduct = function(id){
+		var result;
+		for(var i = 0; i<$scope.data.products.length; i++){
+			if($scope.data.products[i].id == id){
+				result = $scope.data.products[i];
+			}
+		}
+		return result;
+	}
+
+	$scope.product = getProduct(id);
 }]);
 
 

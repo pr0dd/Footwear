@@ -1,0 +1,17 @@
+<div class="container product-details">
+	<div class="col">
+		<p><b>Product Details</b></p>
+		<a href="#/shop">Go back to shop</a>
+	</div>
+	<div>
+		<div>
+			<h3>{{product.name}} <span>{{product.price | currency}}</span></h3>
+			<span>{{product.description}}</span>
+			<p>Available colors:</p>
+			<ul>
+				<li ng-repeat="item in product.color">{{item}}</li>
+			</ul>
+			<button ng-click="addToCart(product)">Add to cart</button>
+		</div>
+	</div>
+</div>
