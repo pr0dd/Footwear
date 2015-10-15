@@ -1,0 +1,38 @@
+<div class="container checkout">
+	<div ng-show="cartData.length==0" class="emptycart">
+		<h2>Your cart is empty</h2>
+		<a href="#/">Back to products</a>
+	</div>
+	<div ng-hide="cartData.length==0">
+		<h2>Your cart</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Quantity</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Sub-Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in cartData">
+					<td>{{item.count}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | currency}}</td>
+					<td>{{(item.price*item.count) | currency}}</td>
+					<td><button ng-click="remove(item)">Remove</button></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" style="text-align:right;font-weight:bold">Total amount:</td>
+					<td style="font-weight:bold">{{total() | currency}}</td>
+				</tr>
+			</tfoot>
+		</table>
+		<nav>
+			<a href="#/">Continue shopping</a>
+			<a href="#/">Finalize the order</a>
+		</nav>
+	</div>
+</div>

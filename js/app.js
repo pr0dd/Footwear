@@ -1,7 +1,8 @@
 ﻿var app = angular.module("app", [
 	"ngRoute",
 	"customFilters", 
-	"customDirectives"
+	"customDirectives",
+	"cart"
 ]);
 
 app.config(["$routeProvider", function($routeProvider){
@@ -16,6 +17,10 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: "partials/product.html",
 		controller: "productCtrl"	
 	})
+	.when("/checkout",{
+		templateUrl: "partials/checkout.html",
+		controller: "checkoutCtrl"	
+	})
 	.otherwise({
 		redirectTo: "/"
 	});
@@ -25,8 +30,9 @@ app.config(["$routeProvider", function($routeProvider){
 app.constant("baseUrl", "data/goods.json");
 app.constant("activeClass", "active");
 
-//Main controller:
-app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", function($scope, $http, baseUrl, activeClass, $location){
+//CONTROLLERS:
+	//Main controller:
+app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", function($scope, $http, baseUrl, activeClass, $location, cart){
 	
 	//Define default variables:
 	var productCategory = null;
@@ -151,12 +157,18 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		$scope.sizeVals.length = 0;
 		$scope.seasonVals.length = 0;
 	}
+	//Add to cart:
+	$scope.addToCart = function(product){
+        cart.addProduct(product.id, product.name, product.price);
+    }
 	//Move to product details:
 	$scope.viewDetails = function(item){
 		$scope.currentProduct = item;
 		$location.path("/product/" + item.id);
 	}
 }]);
+
+	//Product controller:
 
 app.controller("productCtrl", ["$scope", "$routeParams", function($scope, $routeParams){
 	var id = $routeParams['id'];
@@ -171,6 +183,23 @@ app.controller("productCtrl", ["$scope", "$routeParams", function($scope, $route
 	}
 
 	$scope.product = getProduct(id);
+}]);
+
+	//Checkout cart controller:
+	
+app.controller("checkoutCtrl", ["$scope", "cart", function($scope, cart){
+	$scope.cartData = cart.getProducts();
+	$scope.total = function(){
+		var result = 0;
+		for(var i = 0; i < $scope.cartData.length; i++){
+			result += ($scope.cartData[i].count*$scope.cartData[i].price);
+		}
+		return result;
+	};
+	$scope.remove = function(product) {
+		cart.removeProduct(product.id);
+	}
+
 }]);
 
 
