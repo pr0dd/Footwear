@@ -29,10 +29,11 @@ app.config(["$routeProvider", function($routeProvider){
 //Constants:
 app.constant("baseUrl", "data/goods.json");
 app.constant("activeClass", "active");
+app.constant("currentPageSize", 5);
 
 //CONTROLLERS:
 	//Main controller:
-app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", function($scope, $http, baseUrl, activeClass, $location, cart){
+app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", "currentPageSize", function($scope, $http, baseUrl, activeClass, $location, cart, currentPageSize){
 	
 	//Define default variables:
 	var productCategory = null;
@@ -46,6 +47,8 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.sizeVals = []; //ng-model values container for size filter:
 	$scope.seasonVals = []; //ng-model values container for season filter:
 	$scope.viewClass = "tile";
+	$scope.pageSize = currentPageSize;
+	$scope.selectedPage = 1;
 
 	//Initialization function for 'price' filter:
 	var initPrices = function(){
@@ -165,6 +168,13 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.viewDetails = function(item){
 		$scope.currentProduct = item;
 		$location.path("/product/" + item.id);
+	}
+	//Pagination:
+	$scope.setPage = function(page){
+    $scope.selectedPage = page;
+  }
+	$scope.getPageClass = function(page) {
+		return $scope.selectedPage == page ? activeClass: "";
 	}
 }]);
 

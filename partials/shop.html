@@ -55,11 +55,14 @@
 
 	</div>
 	<div class="col l9">
-		<div ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn">
+		<div ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn | range:selectedPage:pageSize">
 			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
 			<span>{{item.description}}</span>
 			<button ng-click="addToCart(item)">Add to cart</button>
 			<button ng-click="viewDetails(item)">View details</button>
 		</div>
+	</div>
+	<div class="col l12 pagination">
+		<a href="" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn | pageCount:pageSize" ng-click="setPage($index + 1)" ng-class="getPageClass($index + 1)">{{$index + 1}}</a>
 	</div>
 </div>
