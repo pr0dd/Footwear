@@ -69,3 +69,81 @@ header {
 		}
 	}
 }
+
+.frontpage {
+	.slider {
+		position: relative;
+		text-align: center;
+		//height: 450px;
+		.slide {
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			div {
+				display: inline-block;
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+		//Animation:
+		.slide.ng-hide-remove, .slide.ng-hide-add {
+			@include transition(1s ease all);
+		}
+		//Appear:
+		.slide.ng-hide-remove {
+			opacity: 0;
+			@include transform( translateX(100%) );
+		}
+		.slide.ng-hide-remove-active {
+			opacity: 1;
+			@include transform( translateX(0) );
+		}
+		//Disappear:
+		.slide.ng-hide-add {
+			opacity: 1;
+			@include transform( translateX(0) );
+		}
+		.slide.ng-hide-add-active {
+			opacity: 0;
+			@include transform( translateX(-100%) );
+		}
+		
+		button#left {
+			position: absolute;
+			left: 0;
+			top:50%;
+			@include transform(translateY(-50%));
+		}
+		button#right {
+			position: absolute;
+			right: 0;
+			top:50%;
+			@include transform(translateY(-50%));
+		}
+		ul.dots {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline-block;
+				background-color: #fff;
+				border: 1px solid black;
+				width: 12px;
+				height: 12px;
+				margin: 0 3px;
+				border-radius: 50%;
+				cursor: pointer;
+				&.active {
+					background-color: #595959;
+				}
+			}
+		}
+	}
+}

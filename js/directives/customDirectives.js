@@ -64,4 +64,202 @@ angular.module("customDirectives", [])
       }
     }
   }
+})
+      ///////////
+      //SLIDER://
+      ///////////
+.directive("slider", function($interval, $timeout, $route, $window){
+  return {
+    restrict: "A",
+    templateUrl: "partials/slider.html", 
+    scope: {
+      source: "=", 
+      duration: "@", 
+      separator: "@", 
+      filterBy: "@", 
+      multiple: "@"
+    }, 
+    link: function(scope, element, attrs){
+      
+      //Create a local copy of the images source:
+      scope.images = scope.source.slice(0);
+      
+      //Use this function to filter source array if scope.filterBy is defined:
+      var filter = function(array, property, separator){
+        array.sort(function(a, b){
+          return a[property] - b[property];
+        });
+        var chosen = array.slice(0, separator*3);
+        return chosen;
+      }
+
+      if(scope.filterBy){
+        scope.images = filter(scope.images, scope.filterBy, parseInt(scope.separator));
+      }
+
+      //Initialize tracking:
+      scope.currentIndex=0;
+      
+      //Get current number of images in the set (for scope.dots function):
+      scope.numOfImgs = scope.images.length;
+      
+      //Represents slider state when page is first loaded (automatic mode activated):
+      var sliderActive = true;
+      
+      //Will be used to clear $timeout in scope.refresh() function:
+      var timer = null;
+      
+      //Create a copy of scope.images set, will be used in divide() function:
+      var copy = scope.images.slice(0);
+
+      //Dividing function:
+      var divide = function(array, separator){
+        var len = Math.ceil(array.length/separator);
+        var result = []; 
+        for(var i = 0; i < len; i++){
+          result.push( {set : array.splice(0, separator)} );
+        }
+        return result;
+      }
+
+      //Create a new array from the copy of scope.images.
+      //Each element of this new array is an object, whose 'set' property will 
+      //contain the required portion of initial scope.images array
+      //(quantity of images in one slide):
+      if(scope.multiple) {
+        scope.groupImgs = divide( copy, parseInt(scope.separator) || 3 );
+      }
+
+      //Create an array that will be used by ng-repeat to represent list of images as dots:
+      scope.dots = function(num){
+        return new Array(num);   
+      };
+
+      //Click the dot to select desired image:
+      scope.setSelected = function(idx){
+        scope.currentIndex = idx;
+      };
+
+      //Index value controls:
+      scope.next = function(){
+        if(scope.multiple){
+          scope.currentIndex < scope.groupImgs.length-1 ? scope.currentIndex++ : scope.currentIndex = 0;
+        } else {
+          scope.currentIndex < scope.images.length-1 ? scope.currentIndex++ : scope.currentIndex = 0;
+        }
+      };
+      scope.prev = function(){
+        if(scope.multiple) {
+          scope.currentIndex > 0 ? scope.currentIndex-- : scope.currentIndex = scope.groupImgs.length - 1;
+        } else {
+          scope.currentIndex > 0 ? scope.currentIndex-- : scope.currentIndex = scope.images.length - 1;
+        }
+      };
+
+      //Set watcher to control visibility of images:
+      scope.$watch('currentIndex', function(){
+        if(scope.multiple) {
+          scope.groupImgs.forEach(function(group){
+            group.visible = false;
+          });
+          scope.groupImgs[scope.currentIndex].visible = true;
+        } else {
+          scope.images.forEach(function(image){
+            image.visible = false;
+          });
+          scope.images[scope.currentIndex].visible = true;
+        }
+      });
+      
+      //Start slider automatically when page is loaded for first time.
+      //If scope.duration is defined - use it, otherwise fall back to defalt value of 5000ms:
+      var slideShow = $interval( scope.next, parseInt(scope.duration) || 5000 );
+
+      //Functions to start and stop the slider:
+      var stop = function(){
+        if(sliderActive){
+          $interval.cancel(slideShow);
+          sliderActive = false;
+        } else {
+          return;
+        }
+      }
+
+      var start = function(){
+        if(sliderActive){
+          return;
+        } else {
+          slideShow = $interval( function(){ scope.next(); }, parseInt(scope.duration) || 5000 );
+          sliderActive = true;
+        }
+      }
+
+      //The scope.refresh() function is most useful for mobile devices. 
+      //A sort of an alrertative for mouseenter/mouseleave events. 
+      //Allows to pause the slider for a while when any control button is clicked
+      //(added as a second function to button's ng-click in template).
+      scope.refresh = function(){
+        if(timer) {
+          $timeout.cancel(timer);
+          timer = null;
+        }
+        stop();
+        timer = $timeout(start, parseInt(scope.duration)*2);
+      }
+      
+      //Set event handlers:
+      element.on('mouseenter', function(){
+        stop();
+      });
+      element.on('mouseleave', function(){
+        start();
+      });
+      scope.$on("$destroy",function(){
+        stop();
+      });
+      scope.$on("$routeChangeStart", function(){
+        stop();
+      });
+    }
+  }
+})
+.directive("slideReady", function($window, $document){
+  return function(scope, element, attrs){
+
+    //Get raw DOM element (working with raw DOM here is required to avoid adding jQuery library):
+    var domElem = angular.element(element)[0];
+    
+    //Traverse DOM and get required parents:
+    var slide = element.parent();
+    var slider = slide.parent();
+    var imgHolder;
+
+    //If scope.separator is defined, then redefine parents and set element's width dynamically.
+    if(scope.separator) {
+      imgHolder = element.parent();
+      slide = imgHolder.parent();
+      slider = slide.parent(); 
+      imgHolder.css({"width": (100/scope.separator).toFixed(2)+"%"});
+    }
+
+    //Wrap $window object with jqLite to use its 'on' method:
+    var win = angular.element($window);
+    
+    //When each image is loaded, check its height. 
+    //Invisible image will return its height as string "auto".
+    //Set slider's height to prevent collapsing effect from position:absolute;
+    element.on("load", function(){
+      var elemHeight = $window.getComputedStyle(domElem, null).height || domElem.currentStyle.height;
+      if( parseInt(elemHeight) ) slider.css({"height": elemHeight});
+    });
+    
+    //Calculate slider's height on each window's resize event:
+    win.on("resize", function(){
+      var elemHeight = $window.getComputedStyle(domElem, null).height || domElem.currentStyle.height;
+      if( parseInt(elemHeight) ) slider.css({"height": elemHeight});
+    });
+  }
 });
+      //////////////////
+      //END OF SLIDER://
+      //////////////////

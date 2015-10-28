@@ -69,3 +69,88 @@ header {
         background-color: lightyellow; }
       .shop .pagination a:hover {
         background-color: yellow; }
+
+.frontpage .slider {
+  position: relative;
+  text-align: center; }
+  .frontpage .slider .slide {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; }
+    .frontpage .slider .slide div {
+      display: inline-block; }
+    .frontpage .slider .slide img {
+      max-width: 100%;
+      height: auto; }
+  .frontpage .slider .slide.ng-hide-remove, .frontpage .slider .slide.ng-hide-add {
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -ms-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    transition: 1s ease all; }
+  .frontpage .slider .slide.ng-hide-remove {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  .frontpage .slider .slide.ng-hide-remove-active {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0); }
+  .frontpage .slider .slide.ng-hide-add {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0); }
+  .frontpage .slider .slide.ng-hide-add-active {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  .frontpage .slider button#left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .frontpage .slider button#right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .frontpage .slider ul.dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0; }
+    .frontpage .slider ul.dots li {
+      display: inline-block;
+      background-color: #fff;
+      border: 1px solid black;
+      width: 12px;
+      height: 12px;
+      margin: 0 3px;
+      border-radius: 50%;
+      cursor: pointer; }
+      .frontpage .slider ul.dots li.active {
+        background-color: #595959; }

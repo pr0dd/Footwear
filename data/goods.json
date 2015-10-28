@@ -1,6 +1,7 @@
 [
 	{
 		"id": "m01",
+		"pics": ["img_01main.jpg", "img_02.jpg", "img_03.jpg", "img_04.jpg"],
 		"category":"Men",
 		"brand": "Ecco",
 		"season": "Winter",
@@ -9,13 +10,15 @@
 		"description": "Ideal for early winter daily walks",
 		"promotion": "null",
 		"price": 138,
-		"sold": 3,
+		"sold": 9,
+		"views": 19,
 		"size": [41, 42, 43, 45],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
 	{
 		"id": "m02",
+		"pics": ["img_05main.jpg", "img_06.jpg", "img_07.jpg", "img_08.jpg"],
 		"category":"Men",
 		"brand": "Sketchers",
 		"season": "Winter",
@@ -24,13 +27,15 @@
 		"description": "Ideal for early winter daily walks",
 		"promotion": "null",
 		"price": 139,
-		"sold": 3,
+		"sold": 1,
+		"views": 4,
 		"size": [41, 42, 43, 46],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
 	{
 		"id": "w01",
+		"pics": ["img_09main.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
 		"category":"Women",
 		"brand": "Ecco",
 		"season": "Spring",
@@ -39,13 +44,15 @@
 		"description": "Ideal for early winter daily walks",
 		"promotion": "null",
 		"price": 138,
-		"sold": 3,
+		"sold": 15,
+		"views": 14,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
 	{
 		"id": "w02",
+		"pics": ["img_09main.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
 		"category":"Women",
 		"brand": "Ecco",
 		"season": "Summer",
@@ -54,13 +61,15 @@
 		"description": "Ideal for early winter daily walkssss",
 		"promotion": "null",
 		"price": 148,
-		"sold": 3,
+		"sold": 5,
+		"views": 9,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
 	{
 		"id": "w03",
+		"pics": ["img_13main.jpg", "img_14.jpg", "img_15.jpg", "img_16.jpg"],
 		"category":"Women",
 		"brand": "Braska",
 		"season": "Winter",
@@ -69,13 +78,15 @@
 		"description": "Ideal for early winter daily walkszzssss",
 		"promotion": "null",
 		"price": 149,
-		"sold": 3,
+		"sold": 4,
+		"views": 1,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
 		"available": true
 	},
 	{
 		"id": "k01",
+		"pics": ["img_17main.jpg", "img_18.jpg", "img_19.jpg", "img_20.jpg"],
 		"category":"Kids",
 		"brand": "Braska",
 		"season": "Autumn",
@@ -85,12 +96,43 @@
 		"promotion": "null",
 		"price": 132,
 		"sold": 3,
+		"views": 8,
 		"size": [41, 42, 43],
 		"color": ["black","grey","darkblue"],
-		"available": true,
-		"filters": {
-			"type": false,
-			"brand": false
-		}
+		"available": true
+	},
+	{
+		"id": "k02",
+		"pics": ["img_21main.jpg", "img_22.jpg", "img_23.jpg", "img_24.jpg"],
+		"category":"Kids",
+		"brand": "Braska",
+		"season": "Autumn",
+		"type": "boots",
+		"name": "boyle-10334",
+		"description": "Ideal for early Autumn walks",
+		"promotion": "null",
+		"price": 129,
+		"sold": 6,
+		"views": 15,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
+	},
+	{
+		"id": "k03",
+		"pics": ["img_25main.jpg", "img_26.jpg", "img_27.jpg", "img_28.jpg"],
+		"category":"Kids",
+		"brand": "Braska",
+		"season": "Autumn",
+		"type": "boots",
+		"name": "boyle-103asdf",
+		"description": "Ideal for early winter daily walks",
+		"promotion": "null",
+		"price": 142,
+		"sold": 7,
+		"views": 5,
+		"size": [41, 42, 43],
+		"color": ["black","grey","darkblue"],
+		"available": true
 	}
 ]

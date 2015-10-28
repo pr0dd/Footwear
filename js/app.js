@@ -1,5 +1,6 @@
 ﻿var app = angular.module("app", [
 	"ngRoute",
+	"ngAnimate",
 	"customFilters", 
 	"customDirectives",
 	"cart"
@@ -30,10 +31,17 @@ app.config(["$routeProvider", function($routeProvider){
 app.constant("baseUrl", "data/goods.json");
 app.constant("activeClass", "active");
 app.constant("currentPageSize", 5);
+app.constant("mainSlider", [
+	{src: "main_slider_1.jpg"},
+	{src: "main_slider_2.jpg"},
+	{src: "main_slider_3.jpg"},
+	{src: "main_slider_4.jpg"},
+	{src: "main_slider_5.jpg"}
+]);
 
 //CONTROLLERS:
 	//Main controller:
-app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", "currentPageSize", function($scope, $http, baseUrl, activeClass, $location, cart, currentPageSize){
+app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", "currentPageSize", "mainSlider", function($scope, $http, baseUrl, activeClass, $location, cart, currentPageSize, mainSlider){
 	
 	//Define default variables:
 	var productCategory = null;
@@ -49,6 +57,9 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.viewClass = "tile";
 	$scope.pageSize = currentPageSize;
 	$scope.selectedPage = 1;
+
+	//Slider:
+	$scope.mainSlider = mainSlider;
 
 	//Initialization function for 'price' filter:
 	var initPrices = function(){

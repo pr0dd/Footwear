@@ -1,0 +1,20 @@
+<div class="slider" ng-if="!multiple">
+	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
+		<img ng-src="images/{{image.src}}" slide-ready>
+	</div>
+	<button id="left" ng-click="prev(); refresh()">Back</button>
+	<button id="right" ng-click="next(); refresh()">Forward</button>
+	<ul class="dots">
+		<li ng-repeat="dot in dots(numOfImgs) track by $index" ng-class="{active : currentIndex==$index}" ng-click="setSelected($index); refresh()"></li>
+	</ul>
+</div>
+
+<div class="slider" ng-if="multiple">
+	<div class="slide" ng-repeat="imgs in groupImgs" ng-show="imgs.visible">
+		<div class="img-holder" ng-repeat="image in imgs.set">
+			<img ng-src="images/{{image.pics[0]}}" slide-ready>
+		</div>
+	</div>
+	<button id="left" ng-click="prev(); refresh()">Back</button>
+	<button id="right" ng-click="next(); refresh()">Forward</button>
+</div>
