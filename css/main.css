@@ -180,6 +180,23 @@ header {
   .frontpage .slider {
     position: relative;
     text-align: center; }
+    .frontpage .slider button {
+      outline: none;
+      line-height: 1;
+      background: transparent;
+      padding: 8px 0;
+      border: none;
+      text-shadow: 0 0 2px #fff;
+      -webkit-transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -ms-transition: 0.2s ease all;
+      -o-transition: 0.2s ease all;
+      transition: 0.2s ease all; }
+      .frontpage .slider button i {
+        font-size: 48px; }
+      .frontpage .slider button:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #eee; }
     .frontpage .slider .slide {
       overflow: hidden;
       position: absolute;
@@ -246,7 +263,7 @@ header {
       transform: translateY(-50%); }
     .frontpage .slider ul.dots {
       position: absolute;
-      bottom: 0;
+      bottom: 5px;
       left: 0;
       right: 0;
       margin: 0;

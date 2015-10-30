@@ -2,8 +2,8 @@
 	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
 		<img ng-src="images/{{image.src}}" ng-click="goTo(image.productId)" slide-ready>
 	</div>
-	<button id="left" ng-click="prev(); refresh()">Back</button>
-	<button id="right" ng-click="next(); refresh()">Forward</button>
+	<button id="left" ng-click="prev(); refresh()"><i class="material-icons">chevron_left</i></button>
+	<button id="right" ng-click="next(); refresh()"><i class="material-icons">chevron_right</i></button>
 	<ul class="dots">
 		<li ng-repeat="dot in dots(numOfImgs) track by $index" ng-class="{active : currentIndex==$index}" ng-click="setSelected($index); refresh()"></li>
 	</ul>
@@ -15,6 +15,6 @@
 			<img ng-src="images/{{image.pics[0]}}" slide-ready>
 		</div>
 	</div>
-	<button id="left" ng-click="prev(); refresh()">Back</button>
-	<button id="right" ng-click="next(); refresh()">Forward</button>
+	<button id="left" ng-click="prev(); refresh()"><i class="material-icons">chevron_left</i></button>
+	<button id="right" ng-click="next(); refresh()"><i class="material-icons">chevron_right</i></button>
 </div>
