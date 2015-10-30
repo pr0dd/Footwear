@@ -68,7 +68,7 @@ angular.module("customDirectives", [])
       ///////////
       //SLIDER://
       ///////////
-.directive("slider", function($interval, $timeout, $route, $window){
+.directive("slider", function($interval, $timeout, $route, $window, $location){
   return {
     restrict: "A",
     templateUrl: "partials/slider.html", 
@@ -171,6 +171,11 @@ angular.module("customDirectives", [])
         }
       });
       
+      //Link image with product id:
+      scope.goTo = function(a){
+        $location.path("/product/"+a);
+      }
+
       //Start slider automatically when page is loaded for first time.
       //If scope.duration is defined - use it, otherwise fall back to defalt value of 5000ms:
       var slideShow = $interval( scope.next, parseInt(scope.duration) || 5000 );

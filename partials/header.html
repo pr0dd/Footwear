@@ -1,15 +1,28 @@
 <div class="container">
-	<div class="col l6">
-		<p><b>HEADER</b></p>
-		<nav class="col">
-			<ul>
-				<li set-active ng-click="selectCategory()">All</li>
-				<li set-active ng-repeat="item in data.products | unique:'category'" ng-click="selectCategory(item)">{{item}}</li>
-			</ul>
-		</nav>
+	<div class="logo">
+		<div class="col l1">
+			<img src="images/logo.jpg" alt="logo">
+		</div>
+		<div class="col l11">
+			<h2>FOOTWEAR</h2> 
+			<span>‘To wear dreams on one's feet is to begin to give a reality to one's dreams.’ – Roger Vivier</span>
+		</div>
 	</div>
-	<div class="col l6">
-		<cart-summary/>
+	<nav class="col l7">
+		<ul>
+			<li ng-click="goTo('/')">HOME</li>
+			<li ng-click="toggleShow('showCats')">SHOP</li>
+			<li ng-click="goTo('about')">ABOUT</li>
+			<li ng-click="goTo('contact')">CONTACT</li>
+		</ul>
+		<ul class="categories" ng-show="showCats">
+			<li set-active ng-repeat="item in data.products | unique:'category'" ng-click="selectCategory(item)">{{item}}</li>
+			<li set-active ng-click="selectCategory()">All</li>
+		</ul>
+	</nav>
+	<div class="cart col l5">
+		<button ng-click="toggleShow('showCart')">Cart</button>
+		<div class="cartDetails" ng-show="showCart"><cart-summary/></div>
 	</div>
 
 </div>

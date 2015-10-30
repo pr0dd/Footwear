@@ -22,6 +22,14 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: "partials/checkout.html",
 		controller: "checkoutCtrl"	
 	})
+	.when("/shipping",{
+		templateUrl: "partials/shipping.html",
+		controller: "shippingCtrl"	
+	})
+	.when("/thankyou",{
+		templateUrl: "partials/thankYou.html",
+		controller: "shippingCtrl"	
+	})
 	.otherwise({
 		redirectTo: "/"
 	});
@@ -32,11 +40,11 @@ app.constant("baseUrl", "data/goods.json");
 app.constant("activeClass", "active");
 app.constant("currentPageSize", 5);
 app.constant("mainSlider", [
-	{src: "main_slider_1.jpg"},
-	{src: "main_slider_2.jpg"},
-	{src: "main_slider_3.jpg"},
-	{src: "main_slider_4.jpg"},
-	{src: "main_slider_5.jpg"}
+	{src: "main_slider_1.jpg", productId: "m01"},
+	{src: "main_slider_2.jpg", productId: "m02"},
+	{src: "main_slider_3.jpg", productId: "w03"},
+	{src: "main_slider_4.jpg", productId: "k01"},
+	{src: "main_slider_5.jpg", productId: "k03"}
 ]);
 
 //CONTROLLERS:
@@ -187,6 +195,15 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.getPageClass = function(page) {
 		return $scope.selectedPage == page ? activeClass: "";
 	}
+	//Navigation:
+	$scope.showCats = false;
+	$scope.showCart = false;
+	$scope.toggleShow = function(a){
+		$scope[a] = !$scope[a];
+	}
+	$scope.goTo = function(a){
+		$location.path("/"+a);
+	}
 }]);
 
 	//Product controller:
@@ -219,6 +236,17 @@ app.controller("checkoutCtrl", ["$scope", "cart", function($scope, cart){
 	};
 	$scope.remove = function(product) {
 		cart.removeProduct(product.id);
+	}
+
+}]);
+
+	//Shipping form controller:
+
+app.controller("shippingCtrl", ["$scope", "cart", "$location", function($scope, cart, $location){
+	$scope.cartData = cart.getProducts();
+	$scope.data.shipping = {};//review;
+	$scope.sendOrder = function(){
+		$location.path("/thankyou");
 	}
 
 }]);

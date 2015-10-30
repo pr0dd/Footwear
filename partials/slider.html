@@ -1,6 +1,6 @@
 <div class="slider" ng-if="!multiple">
 	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
-		<img ng-src="images/{{image.src}}" slide-ready>
+		<img ng-src="images/{{image.src}}" ng-click="goTo(image.productId)" slide-ready>
 	</div>
 	<button id="left" ng-click="prev(); refresh()">Back</button>
 	<button id="right" ng-click="next(); refresh()">Forward</button>

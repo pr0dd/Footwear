@@ -29,15 +29,38 @@ ul {
 
 /*HEADER*/
 header {
-	background-color: #eee;
-	text-align: center;
+	background-color: #000;
+	color: #eee;	
+	//text-align: center;
+	height: 170px;
+	.logo {
+		@extend %clearfix;
+		//padding: 10px 0;
+		font-style: italic;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		h2 {
+			padding-left: 20px;
+		}
+		span {
+			float: right;
+			color: #929292;
+			font-size: 90%;
+		}
+	}
 	nav {
 		ul {
-			@extend %clearfix;
+			//@extend %clearfix;
+			text-align: left;
 			li {
-				position: relative;	
-				float: left;
-				padding: 10px;
+				//outline: 1px solid blue;
+				display: inline-block;
+				padding: 5px 20px;
+				&:first-child {
+					padding-left: 0;
+				}
 				&.active {
 					background-color: lightblue;
 				}
@@ -46,6 +69,73 @@ header {
 					cursor: pointer;
 				}
 			}
+			//Animation:
+			&.categories.ng-hide-remove, &.categories.ng-hide-add {
+			@include transition(0.5s ease all);
+			}
+			//Appear:
+			&.categories.ng-hide-remove {
+				opacity: 0;
+				@include transform( translateY(-50%) );
+			}
+			&.categories.ng-hide-remove-active {
+				opacity: 1;
+				@include transform( translateY(0) );
+			}
+			//Disappear:
+			&.categories.ng-hide-add {
+				opacity: 1;
+				@include transform( translateY(0) );
+			}
+			&.categories.ng-hide-add-active {
+				opacity: 0;
+				@include transform( translateY(-50%) );
+			}
+		}
+	}
+	.cart {
+		text-align: right;
+		button {
+			background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+			outline: none;
+			border: 1px solid transparent;
+			padding: 0 15px;
+			@include border-radius(3px);
+
+		}
+		.cartDetails {
+			div {
+				padding-top:10px;
+			}
+			button {
+				line-height: 1;
+				@include border-radius(50%);
+				padding: 1px 2px;
+				color: #000;
+				background: linear-gradient(#e7e7e7 49%, #b7b7b7 50%), #b7b7b7;
+			}
+		}
+		//Animation:
+		.cartDetails.ng-hide-remove, .cartDetails.ng-hide-add {
+			@include transition(0.5s ease all);
+		}
+		//Appear:
+		.cartDetails.ng-hide-remove {
+			opacity: 0;
+			@include transform( translateY(-50%) );
+		}
+		.cartDetails.ng-hide-remove-active {
+			opacity: 1;
+			@include transform( translateY(0) );
+		}
+		//Disappear:
+		.cartDetails.ng-hide-add {
+			opacity: 1;
+			@include transform( translateY(0) );
+		}
+		.cartDetails.ng-hide-add-active {
+			opacity: 0;
+			@include transform( translateY(-50%) );
 		}
 	}
 }
@@ -71,6 +161,7 @@ header {
 }
 
 .frontpage {
+	padding-top: 10px;
 	.slider {
 		position: relative;
 		text-align: center;
@@ -87,6 +178,7 @@ header {
 			img {
 				max-width: 100%;
 				height: auto;
+				cursor: pointer;
 			}
 		}
 		//Animation:
