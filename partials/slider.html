@@ -11,8 +11,20 @@
 
 <div class="slider" ng-if="multiple">
 	<div class="slide" ng-repeat="imgs in groupImgs" ng-show="imgs.visible">
-		<div class="img-holder" ng-repeat="image in imgs.set">
+		<div class="img-holder" ng-repeat="image in imgs.set" ng-mouseenter="toggleHover()" ng-click="goTo(image.id)">
 			<img ng-src="images/{{image.pics[0]}}" slide-ready>
+			<div class="info">
+				<p>{{image.name}}</p>
+				<p class="type">{{image.type}}</p>
+				<p>Price:</p>
+				<p class="price">{{image.price}}$</p>
+			</div>
+			<div class="overlay" ng-show="isHover" ng-mouseleave="toggleHover()">
+				<div class="buttons">
+					<button class="quick-look"><i class="material-icons">search</i></button>
+					<button class="details" ng-click="goTo(image.id)"><i class="material-icons">description</i></button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<button id="left" ng-click="prev(); refresh()"><i class="material-icons">chevron_left</i></button>
