@@ -75,6 +75,7 @@ angular.module("customDirectives", [])
     scope: {
       source: "=", 
       duration: "@", 
+      showdots: "@", 
       separator: "@", 
       filterBy: "@", 
       multiple: "@"
@@ -173,7 +174,12 @@ angular.module("customDirectives", [])
       
       //Link image with product id:
       scope.goTo = function(a){
-        $location.path("/product/"+a);
+        if(a) {
+          $location.path("/product/"+a);
+        } else {
+          $location.path("/shop");
+        }
+
       }
 
       //Start slider automatically when page is loaded for first time.

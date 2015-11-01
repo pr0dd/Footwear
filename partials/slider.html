@@ -4,7 +4,7 @@
 	</div>
 	<button id="left" ng-click="prev(); refresh()"><i class="material-icons">chevron_left</i></button>
 	<button id="right" ng-click="next(); refresh()"><i class="material-icons">chevron_right</i></button>
-	<ul class="dots">
+	<ul class="dots" ng-if="showdots">
 		<li ng-repeat="dot in dots(numOfImgs) track by $index" ng-class="{active : currentIndex==$index}" ng-click="setSelected($index); refresh()"></li>
 	</ul>
 </div>

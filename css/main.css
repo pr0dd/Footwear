@@ -326,6 +326,19 @@ header {
 
 .frontpage {
   padding-top: 10px; }
+  .frontpage div {
+    text-align: center; }
+    .frontpage div h3 {
+      color: #444;
+      font-size: 18px; }
+      @media only screen and (min-width: 601px) {
+        .frontpage div h3 {
+          font-size: 20px; } }
+      @media only screen and (min-width: 990px) {
+        .frontpage div h3 {
+          font-size: 24px; } }
+  .frontpage .brands {
+    padding-top: 20px; }
   .frontpage .dummy {
     margin: 0;
     padding: 0; }
@@ -333,6 +346,16 @@ header {
       display: table;
       content: "";
       clear: both; }
+  @media only screen and (min-width: 601px) {
+    .frontpage .featured div.left img {
+      padding-right: 10px; } }
+  @media only screen and (min-width: 601px) {
+    .frontpage .featured div.right img {
+      padding-left: 10px; } }
+  .frontpage .featured img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer; }
   .frontpage .slider {
     position: relative;
     text-align: center; }

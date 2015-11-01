@@ -304,6 +304,18 @@ header {
 }
 .frontpage {
 	padding-top: 10px;
+	div {
+		text-align: center;
+		h3 {
+			color: #444;
+			font-size: 18px;
+			@include bp-medium {font-size: 20px;}
+			@include bp-large {font-size: 24px;}
+		}
+	}
+	.brands {
+		padding-top: 20px;
+	}
 	.dummy {
 		margin: 0;
 		padding:0;
@@ -312,6 +324,24 @@ header {
 			content: "";
 			clear: both;
 		}
+	}
+	.featured {
+		div.left {
+			img {
+				@include bp-medium {padding-right:10px;}
+			}
+		}
+		div.right {
+			img {
+				@include bp-medium {padding-left:10px;}
+			}
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+			cursor: pointer;
+		}
+
 	}
 	.slider {
 		position: relative;

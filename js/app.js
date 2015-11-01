@@ -46,10 +46,15 @@ app.constant("mainSlider", [
 	{src: "main_slider_4.jpg", productId: "k01"},
 	{src: "main_slider_5.jpg", productId: "k03"}
 ]);
+app.constant("brandsSlider", [
+	{src: "br1.png"},
+	{src: "br2.png"},
+	{src: "br3.png"}
+]);
 
 //CONTROLLERS:
 	//Main controller:
-app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", "currentPageSize", "mainSlider", function($scope, $http, baseUrl, activeClass, $location, cart, currentPageSize, mainSlider){
+app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$location", "cart", "currentPageSize", "mainSlider", "brandsSlider", function($scope, $http, baseUrl, activeClass, $location, cart, currentPageSize, mainSlider, brandsSlider){
 	
 	//Define default variables:
 	var productCategory = null;
@@ -66,8 +71,9 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.pageSize = currentPageSize;
 	$scope.selectedPage = 1;
 
-	//Slider:
+	//Sliders:
 	$scope.mainSlider = mainSlider;
+	$scope.brandsSlider = brandsSlider;
 
 	//Initialization function for 'price' filter:
 	var initPrices = function(){
