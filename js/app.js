@@ -182,9 +182,17 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	//Add to cart:
 	$scope.addToCart = function(product){
         cart.addProduct(product.id, product.name, product.price);
+        if($scope.modalShown) {
+			$scope.modalShown = false;
+			$scope.modalProduct = null;
+		}
     }
 	//Move to product details:
 	$scope.viewDetails = function(item){
+		if($scope.modalShown) {
+			$scope.modalShown = false;
+			$scope.modalProduct = null;
+		}
 		$scope.currentProduct = item;
 		$location.path("/product/" + item.id);
 	}
@@ -204,6 +212,18 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.goTo = function(a){
 		$location.path("/"+a);
 	}
+	
+	//Deal with modals:
+	$scope.modalShown = false;
+	$scope.modalProduct = null;
+	$scope.$on("showModal", function(event, product){
+		$scope.modalProduct = product;
+		$scope.modalShown = true;
+	});
+	$scope.$on("closeModal", function(){
+		$scope.modalProduct = null;
+		$scope.modalShown = false;
+	});
 }]);
 
 	//Product controller:

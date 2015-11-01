@@ -11,7 +11,7 @@
 
 <div class="slider" ng-if="multiple">
 	<div class="slide" ng-repeat="imgs in groupImgs" ng-show="imgs.visible">
-		<div class="img-holder" ng-repeat="image in imgs.set" ng-mouseenter="toggleHover()" ng-click="goTo(image.id)">
+		<div class="img-holder" ng-repeat="image in imgs.set" ng-mouseenter="toggleHover()">
 			<img ng-src="images/{{image.pics[0]}}" slide-ready>
 			<div class="info">
 				<p>{{image.name}}</p>
@@ -21,7 +21,7 @@
 			</div>
 			<div class="overlay" ng-show="isHover" ng-mouseleave="toggleHover()">
 				<div class="buttons">
-					<button class="quick-look"><i class="material-icons">search</i></button>
+					<button class="quick-look" ng-click="getModal(image)"><i class="material-icons">search</i></button>
 					<button class="details" ng-click="goTo(image.id)"><i class="material-icons">description</i></button>
 				</div>
 			</div>

@@ -1,14 +1,14 @@
 <div class="container">
 	<div class="logo">
-		<div class="col l1">
+		<div class="col image">
 			<img src="images/logo.jpg" alt="logo">
 		</div>
-		<div class="col l11">
+		<div class="col title">
 			<h2>FOOTWEAR</h2> 
 			<span>‘To wear dreams on one's feet is to begin to give a reality to one's dreams.’ – Roger Vivier</span>
 		</div>
 	</div>
-	<nav class="col l7">
+	<nav class="col m6">
 		<ul>
 			<li ng-click="goTo('/')">HOME</li>
 			<li ng-click="toggleShow('showCats')">SHOP</li>
@@ -20,7 +20,7 @@
 			<li set-active ng-click="selectCategory()">All</li>
 		</ul>
 	</nav>
-	<div class="cart col l5">
+	<div class="cart col m6">
 		<button ng-click="toggleShow('showCart')">Cart</button>
 		<div class="cartDetails" ng-show="showCart"><cart-summary/></div>
 	</div>

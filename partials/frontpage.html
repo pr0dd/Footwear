@@ -1,7 +1,38 @@
 <div class="container frontpage">
+	<modal show="modalShown">
+		<div class="image">
+			<img ng-src="images/{{modalProduct.pics[1]}}" alt="image">
+		</div>
+		<div class="details">
+			<h3>{{modalProduct.name}}</h3>
+			<p> The product is
+				<span ng-show="modalProduct.available" class="green"> in stock. </span>
+				<span ng-hide="modalProduct.available" class="red"> out of stock. </span>
+				Article: {{modalProduct.id}}
+			</p>
+			<p class="description">{{modalProduct.description}}</p>
+			<p>Available sizes:</p>
+			<ul>
+				<li ng-repeat="size in modalProduct.size">{{size}}</li>
+			</ul>
+			<p class="price">
+				Price: <span> {{modalProduct.price}}$</span>
+			</p>
+			<button ng-click="addToCart(modalProduct)">Add to cart</button>
+			<button ng-click="viewDetails(modalProduct)">Details</button>
+		</div>
+	</modal>
 	<div class="col" slider source="mainSlider" duration="5500"></div>
-	<div><p>some dummy nonsense</p></div>
+	<div class="dummy"></div>
+	<div class="row">
+		<p>Top sellers:</p>
+	</div>
    	<div class="col" slider source="data.products" duration="5500" separator="4" multiple="true" filter-by="sold"></div>
-   	<div><p>some dummy nonsense</p></div>
+   	<div class="dummy"></div>
+   	<div class="row">
+	   	<p>Popular: </p>
+   	</div>
    	<div class="col" slider source="data.products" duration="3500" separator="4" multiple="true" filter-by="views"></div>
+   	<div class="dummy"></div>
+   	<div><p>Something else</p></div>
 </div>

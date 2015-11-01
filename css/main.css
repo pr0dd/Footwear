@@ -42,27 +42,62 @@ ul {
     .container {
       width: 60%; } }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 /*HEADER*/
 header {
   background-color: #000;
-  color: #eee;
-  height: 170px; }
+  color: #eee; }
+  header .container {
+    padding-bottom: 10px; }
   header .logo {
     font-style: italic; }
-    header .logo img {
-      max-width: 100%;
-      height: auto; }
-    header .logo h2 {
-      padding-left: 20px; }
-    header .logo span {
-      float: right;
-      color: #929292;
-      font-size: 90%; }
+    header .logo div {
+      float: left; }
+      header .logo div.image {
+        width: 20%; }
+        @media only screen and (min-width: 601px) {
+          header .logo div.image {
+            width: 10%; } }
+        header .logo div.image img {
+          max-width: 100%;
+          height: auto; }
+      header .logo div.title {
+        width: 80%; }
+        @media only screen and (min-width: 601px) {
+          header .logo div.title {
+            width: 90%; } }
+        header .logo div.title h2 {
+          font-size: 24px;
+          padding-left: 20px; }
+          @media only screen and (min-width: 601px) {
+            header .logo div.title h2 {
+              font-size: 30px; } }
+        header .logo div.title span {
+          float: right;
+          color: #929292;
+          font-size: 60%; }
+          @media only screen and (min-width: 601px) {
+            header .logo div.title span {
+              font-size: 80%; } }
+          @media only screen and (min-width: 1300px) {
+            header .logo div.title span {
+              font-size: 90%; } }
   header nav ul {
     text-align: left; }
     header nav ul li {
       display: inline-block;
-      padding: 5px 20px; }
+      padding: 5px;
+      font-size: 80%; }
+      @media only screen and (min-width: 601px) {
+        header nav ul li {
+          padding: 5px 6px;
+          font-size: 90%; } }
+      @media only screen and (min-width: 1300px) {
+        header nav ul li {
+          padding: 5px 20px;
+          font-size: 100%; } }
       header nav ul li:first-child {
         padding-left: 0; }
       header nav ul li.active {
@@ -105,7 +140,11 @@ header {
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
   header .cart {
-    text-align: right; }
+    text-align: right;
+    font-size: 80%; }
+    @media only screen and (min-width: 1300px) {
+      header .cart {
+        font-size: 90%; } }
     header .cart button {
       background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
       outline: none;
@@ -117,6 +156,11 @@ header {
       border-radius: 3px; }
     header .cart .cartDetails div {
       padding-top: 10px; }
+      header .cart .cartDetails div span {
+        font-size: 80%; }
+        @media only screen and (min-width: 1300px) {
+          header .cart .cartDetails div span {
+            font-size: 100%; } }
     header .cart .cartDetails button {
       line-height: 1;
       -moz-border-radius: 50%;
@@ -126,6 +170,14 @@ header {
       padding: 1px 2px;
       color: #000;
       background: linear-gradient(#e7e7e7 49%, #b7b7b7 50%), #b7b7b7; }
+      header .cart .cartDetails button i {
+        font-size: 16px; }
+        @media only screen and (min-width: 601px) {
+          header .cart .cartDetails button i {
+            font-size: 20px; } }
+        @media only screen and (min-width: 1300px) {
+          header .cart .cartDetails button i {
+            font-size: 25px; } }
     header .cart .cartDetails.ng-hide-remove, header .cart .cartDetails.ng-hide-add {
       -webkit-transition: 0.5s ease all;
       -moz-transition: 0.5s ease all;
@@ -175,8 +227,112 @@ header {
       .shop .pagination a:hover {
         background-color: yellow; }
 
+.modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  .modal .overlay {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.8; }
+  .modal .dialog {
+    z-index: 10000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    background-color: #fff;
+    width: 90%;
+    box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2), 0 2px 10px 0 rgba(255, 255, 255, 0.19);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    @media only screen and (min-width: 601px) {
+      .modal .dialog {
+        width: 80%; } }
+    @media only screen and (min-width: 990px) {
+      .modal .dialog {
+        width: 55%; } }
+    .modal .dialog .content {
+      overflow: hidden;
+      height: 100%; }
+      .modal .dialog .content div.image, .modal .dialog .content div.details {
+        float: left;
+        width: 95%; }
+        @media only screen and (min-width: 601px) {
+          .modal .dialog .content div.image, .modal .dialog .content div.details {
+            width: 50%; } }
+        .modal .dialog .content div.image img, .modal .dialog .content div.details img {
+          max-width: 100%;
+          height: auto; }
+      .modal .dialog .content div.details {
+        padding-left: 15px; }
+        .modal .dialog .content div.details h3 {
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.19); }
+        .modal .dialog .content div.details p {
+          color: #444;
+          font-size: 85%; }
+          .modal .dialog .content div.details p.description {
+            font-style: italic; }
+          .modal .dialog .content div.details p.price {
+            margin-top: 30px;
+            margin-bottom: 5px; }
+            .modal .dialog .content div.details p.price span:first-child {
+              font-weight: bold;
+              font-size: 110%;
+              font-style: italic; }
+          .modal .dialog .content div.details p .green {
+            color: #4CAF50; }
+          .modal .dialog .content div.details p .red {
+            color: #F44336; }
+        .modal .dialog .content div.details ul {
+          font-size: 85%;
+          color: #4CAF50; }
+          .modal .dialog .content div.details ul li {
+            display: inline-block;
+            padding: 0 10px; }
+        .modal .dialog .content div.details button {
+          color: #000;
+          margin: 10px 5px 10px 0;
+          background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+          outline: none;
+          border: 1px solid transparent;
+          padding: 0 5px;
+          -moz-border-radius: 3px;
+          -webkit-border-radius: 3px;
+          -ms-border-radius: 3px;
+          border-radius: 3px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19); }
+          .modal .dialog .content div.details button:hover {
+            opacity: 0.8;
+            filter: alpha(opacity=80); }
+    .modal .dialog .close {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      cursor: pointer;
+      font-size: 120%;
+      padding: 5px; }
+
 .frontpage {
   padding-top: 10px; }
+  .frontpage .dummy {
+    margin: 0;
+    padding: 0; }
+    .frontpage .dummy:after {
+      display: table;
+      content: "";
+      clear: both; }
   .frontpage .slider {
     position: relative;
     text-align: center; }
@@ -224,8 +380,6 @@ header {
       .frontpage .slider .slide .img-holder {
         position: relative;
         cursor: pointer; }
-        .frontpage .slider .slide .img-holder img {
-          cursor: none; }
         .frontpage .slider .slide .img-holder .info {
           position: absolute;
           bottom: 0;

@@ -225,6 +225,11 @@ angular.module("customDirectives", [])
       scope.$on("$routeChangeStart", function(){
         stop();
       });
+      //Deal with modals:
+      scope.getModal = function(a){
+        scope.$emit("showModal", a);
+      }
+
     }
   }
 })
@@ -270,7 +275,23 @@ angular.module("customDirectives", [])
       scope.isHover = !scope.isHover;
     }
   }
-});
+})
       //////////////////
       //END OF SLIDER://
       //////////////////
+.directive("modal", function(){
+  return {
+    restrict: "E", 
+    scope: {
+      show: "="
+    }, 
+    replace: true,
+    transclude: true,
+    templateUrl: "partials/modal.html", 
+    link: function(scope, element, attrs){
+      scope.hideModal = function(){
+        scope.$emit("closeModal");
+      }
+    }
+  }
+});
