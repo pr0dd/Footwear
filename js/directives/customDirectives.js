@@ -184,7 +184,7 @@ angular.module("customDirectives", [])
 
       //Start slider automatically when page is loaded for first time.
       //If scope.duration is defined - use it, otherwise fall back to defalt value of 5000ms:
-      //var slideShow = $interval( scope.next, parseInt(scope.duration) || 5000 );
+      var slideShow = $interval( scope.next, parseInt(scope.duration) || 5000 );
 
       //Functions to start and stop the slider:
       var stop = function(){
@@ -219,12 +219,12 @@ angular.module("customDirectives", [])
       }
       
       //Set event handlers:
-      // element.on('mouseenter', function(){
-      //   stop();
-      // });
-      // element.on('mouseleave', function(){
-      //   start();
-      // });
+      element.on('mouseenter', function(){
+        stop();
+      });
+      element.on('mouseleave', function(){
+        start();
+      });
       scope.$on("$destroy",function(){
         stop();
       });
