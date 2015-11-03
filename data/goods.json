@@ -1,7 +1,7 @@
 [
 	{
 		"id": "m01",
-		"pics": ["img_01main.jpg", "img_02.jpg", "img_03.jpg", "img_04.jpg"],
+		"pics": ["img_01main.jpg","img_01shop.jpg", "img_02.jpg", "img_03.jpg", "img_04.jpg"],
 		"category":"Men",
 		"brand": "Ecco",
 		"season": "Winter",
@@ -18,7 +18,7 @@
 	},
 	{
 		"id": "m02",
-		"pics": ["img_05main.jpg", "img_06.jpg", "img_07.jpg", "img_08.jpg"],
+		"pics": ["img_05main.jpg", "img_05shop.jpg", "img_06.jpg", "img_07.jpg", "img_08.jpg"],
 		"category":"Men",
 		"brand": "Sketchers",
 		"season": "Winter",
@@ -35,7 +35,7 @@
 	},
 	{
 		"id": "w01",
-		"pics": ["img_09main.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
+		"pics": ["img_09main.jpg", "img_09shop.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
 		"category":"Women",
 		"brand": "Ecco",
 		"season": "Spring",
@@ -52,7 +52,7 @@
 	},
 	{
 		"id": "w02",
-		"pics": ["img_09main.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
+		"pics": ["img_09main.jpg", "img_09shop.jpg", "img_10.jpg", "img_11.jpg", "img_12.jpg"],
 		"category":"Women",
 		"brand": "Ecco",
 		"season": "Summer",
@@ -69,7 +69,7 @@
 	},
 	{
 		"id": "w03",
-		"pics": ["img_13main.jpg", "img_14.jpg", "img_15.jpg", "img_16.jpg"],
+		"pics": ["img_13main.jpg", "img_13shop.jpg", "img_14.jpg", "img_15.jpg", "img_16.jpg"],
 		"category":"Women",
 		"brand": "Braska",
 		"season": "Winter",
@@ -86,7 +86,7 @@
 	},
 	{
 		"id": "k01",
-		"pics": ["img_17main.jpg", "img_18.jpg", "img_19.jpg", "img_20.jpg"],
+		"pics": ["img_17main.jpg", "img_17shop.jpg", "img_18.jpg", "img_19.jpg", "img_20.jpg"],
 		"category":"Kids",
 		"brand": "Braska",
 		"season": "Autumn",
@@ -103,7 +103,7 @@
 	},
 	{
 		"id": "k02",
-		"pics": ["img_21main.jpg", "img_22.jpg", "img_23.jpg", "img_24.jpg"],
+		"pics": ["img_21main.jpg",  "img_21shop.jpg", "img_22.jpg", "img_23.jpg", "img_24.jpg"],
 		"category":"Kids",
 		"brand": "Braska",
 		"season": "Autumn",
@@ -120,7 +120,7 @@
 	},
 	{
 		"id": "k03",
-		"pics": ["img_25main.jpg", "img_26.jpg", "img_27.jpg", "img_28.jpg"],
+		"pics": ["img_25main.jpg", "img_25shop.jpg", "img_26.jpg", "img_27.jpg", "img_28.jpg"],
 		"category":"Kids",
 		"brand": "Braska",
 		"season": "Autumn",

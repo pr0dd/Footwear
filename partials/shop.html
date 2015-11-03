@@ -1,63 +1,100 @@
 <div class="container shop">
-	<div class="col">
-		<p><b>SHOP</b></p>
-		<a href="#/main">Go back</a>
-	</div>
+		
 	<div class="col l3 filters">
 		<div class="view-options">
-			<p>View options:</p>
-			<button ng-click="setViewClass('tile')"><i class="material-icons">view_module</i></button>
-			<button ng-click="setViewClass('list')"><i class="material-icons">view_list</i></button>			
+			<h5 anim-height speed="250">View options:</h5>
+			<div>
+				<p>
+					<button ng-click="setViewClass('tile')"><i class="material-icons">view_module</i></button>
+					<button ng-click="setViewClass('list')"><i class="material-icons">view_list</i></button>
+				</p>		
+			</div>	
 		</div>
 		<div class="price">
-			<p>
-				Min price:
-				<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.min">&nbsp
-				<input number-only type="text" ng-model="data.min"> {{data.min}}
-			</p>
-			<p>
-				Max price:
-				<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.max">&nbsp
-				<input number-only type="text" ng-model="data.max"> {{data.max}}
-			</p>
+			<h5 anim-height speed="250">Price:</h5>
+			<div>
+				<p>
+					Min:
+					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.min">&nbsp
+					<input number-only type="text" ng-model="data.min">
+				</p>
+				<p>
+					Max:
+					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.max">&nbsp
+					<input number-only type="text" ng-model="data.max">
+				</p>
+			</div>
 		</div>
 		<div class="type">
-		<p>Types:</p>
-		<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'type'">
-			<input type="checkbox" id="{{item + $index + 1}}" ng-model="typeVals[$index]" ng-click="toggleFilter(item, productType)">
-			<label for="{{item + $index + 1}}">{{item}}</label>
-		</p>
+			<h5 anim-height speed="250">Type:</h5>
+			<div>
+				<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'type'">
+					<input type="checkbox" id="{{item + $index + 1}}" ng-model="typeVals[$index]" ng-click="toggleFilter(item, productType)">
+					<label for="{{item + $index + 1}}">{{item}}</label>
+				</p>
+			</div>
 		</div>
 
 		<div class="brand">
-		<p>Brands:</p>
-		<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'brand'">
-			<input type="checkbox" id="{{item + $index + 1}}" ng-model="brandVals[$index]" ng-click="toggleFilter(item, productBrand)">
-			<label for="{{item + $index + 1}}">{{item}}</label>
-		</p>
+			<h5 anim-height speed="250">Brand:</h5>
+			<div>
+				<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'brand'">
+					<input type="checkbox" id="{{item + $index + 1}}" ng-model="brandVals[$index]" ng-click="toggleFilter(item, productBrand)">
+					<label for="{{item + $index + 1}}">{{item}}</label>
+				</p>
+			</div>
 		</div>
 
 		<div class="season">
-		<p>Season:</p>
-		<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'season'">
-			<input type="checkbox" id="{{'season'+item}}" ng-model="seasonVals[$index]" ng-click="toggleFilter(item, productSeason)">
-			<label for="{{'season'+item}}">{{item}}</label>
-		</p>
+			<h5 anim-height speed="250">Season:</h5>
+			<div>
+				<p ng-repeat="item in data.products | filter:categoryFilterFn | unique:'season'">
+					<input type="checkbox" id="{{'season'+item}}" ng-model="seasonVals[$index]" ng-click="toggleFilter(item, productSeason)">
+					<label for="{{'season'+item}}">{{item}}</label>
+				</p>
+			</div>
 		</div>
 
 		<div class="size">
-		<p>Size:</p>
-		<p ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size'">
-			<input type="checkbox" id="{{'size' + item}}" ng-model="sizeVals[$index]" ng-click="toggleFilter(item, productSize)">
-			<label for="{{'size' + item}}">{{item}}</label>
-		</p>
+			<h5 anim-height speed="250">Size:</h5>
+			<div>
+				<p ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size'">
+					<input type="checkbox" id="{{'size' + item}}" ng-model="sizeVals[$index]" ng-click="toggleFilter(item, productSize)">
+					<label for="{{'size' + item}}">{{item}}</label>
+				</p>
+			</div>
 		</div>
 
 	</div>
-	<div class="col l9">
+	<div class="col l9 products">
+		<div class="col quote" ng-switch on="switchQuote">
+			<div ng-switch-when="Men">
+				<img src="images/q2.jpg">
+				<h3>Men's shoes</h3>
+				<p>Good shoes take you good places</p>
+			</div>
+			<div ng-switch-when="Women">
+				<img src="images/q3.jpg">
+				<h3>Women's shoes</h3>
+				<p>If i ever let my head down, it will only be to admire my shoes</p>
+			</div>
+			<div ng-switch-when="Kids">
+				<img src="images/q4.jpg">
+				<h3>Kids' shoes</h3>
+				<p>One shoe can change your life. Cindirella</p>
+			</div>
+			<div ng-switch-default>
+				<img src="images/q1.jpg">
+				<h3>Shoes for all</h3>
+				<p>Keep your head, heels and standards high.</p>
+			</div>
+		</div>
+		<div class="dummy"></div>
 		<div ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn | range:selectedPage:pageSize">
-			<h3>{{item.name}} <span>{{item.price | currency}}</span></h3>
-			<span>{{item.description}}</span>
+			<img ng-src="images/{{item.pics[1]}}">
+			<h5>{{item.name}}</h5>
+			<p>{{item.description}}</p>
+			<p class="price">Price: <span>{{item.price | currency}}$</span></p>
 			<button ng-click="addToCart(item)">Add to cart</button>
 			<button ng-click="viewDetails(item)">View details</button>
 		</div>

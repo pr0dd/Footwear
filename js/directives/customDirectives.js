@@ -300,4 +300,65 @@ angular.module("customDirectives", [])
       }
     }
   }
+})
+
+.directive("animHeight", function($interval, $window){
+    return { 
+    scope: {
+      speed: "="
+    },
+    link: function(scope, element, attrs){
+      var domElem = angular.element(element)[0];
+      var domSibling = domElem.nextElementSibling;
+      var nextElem = angular.element(domSibling);
+      var start;
+      //var start = parseInt($window.getComputedStyle(domSibling, null).height);
+      var end = 0;
+      var slidDown = false;
+      scope.$on("newCategory", function(){
+        nextElem.css("height","auto");
+      });
+      var opts = {
+        frameTime: 10,
+        speed: parseInt(scope.speed),
+        delta: function(progress){
+                return Math.pow(progress, 3);
+              },
+        stepDown: function(del){
+                nextElem.css({"height": start + (end-start)*del + "px"});
+              },
+        stepUp: function(del){
+                nextElem.css({"height": end + (start-end)*del + "px"});
+              }
+
+      };
+      var animate = function(opts) {  
+        var step;
+        if(slidDown) {
+            step = opts.stepUp;
+            slidDown = !slidDown;
+          } else {
+            step = opts.stepDown;
+            slidDown = !slidDown;
+          }
+        var begin = new Date;
+        var id = $interval(function() {
+          var timePassed = new Date - begin;
+          var progress = timePassed / opts.speed || timePassed / 500;
+          if (progress > 1) progress = 1;
+          var delta = opts.delta(progress);
+          step(delta);
+          if (progress == 1) {
+            $interval.cancel(id);
+          }
+        }, opts.frameTime);
+      }
+      element.on("click", function(){
+        var localStart = parseInt($window.getComputedStyle(domSibling, null).height);
+        if(start != localStart && localStart != 0) start = localStart;
+        animate(opts);
+      });
+
+    }
+  }
 });

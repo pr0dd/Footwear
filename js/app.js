@@ -70,6 +70,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.viewClass = "tile";
 	$scope.pageSize = currentPageSize;
 	$scope.selectedPage = 1;
+	$scope.switchQuote = null;
 
 	//Sliders:
 	$scope.mainSlider = mainSlider;
@@ -135,10 +136,12 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		//Selecting functions:
 	$scope.selectCategory = function(newItem){
 		productCategory = newItem;
+		$scope.switchQuote = newItem;
 		//Update values of 'price' filter and refresh other filters at each change of category;
 		$scope.refreshFilters();
 		initPrices();
 		$location.path("/shop");
+		$scope.$broadcast("newCategory");
 	}
 	$scope.toggleFilter = function(newItem, source){
 		if(source.indexOf(newItem)==-1) {
