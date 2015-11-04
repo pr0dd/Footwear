@@ -25,9 +25,6 @@
 				if(data.length<start){
 					return [];
 				} else {
-					//$filter limitTo is not necessary;
-					//It is here to show how it can be used;
-					//So range will work fine without it;
 					return $filter("limitTo")(data.splice(start,pageSize));
 				}
 			} else {

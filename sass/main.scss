@@ -254,6 +254,8 @@ footer {
 
 .shop {
 	div.filters {
+		@include bp-medium {width:30%; float: left;}
+		@include bp-xlarge {width:20%;}
 		h5 {
 			font-weight: bold;
 			font-style: italic;
@@ -293,6 +295,9 @@ footer {
 							border: 1px solid #999;
 						}
 					}
+					input[type=text], input[type=range] {
+						@include bp-medium {width: 90%;}
+					}
 					input[type=text] {
 						border: 1px solid #999;
 						@include border-radius(3px);
@@ -306,17 +311,69 @@ footer {
 		}
 	}
 	div.products {
-		div {
+		@include bp-medium {width:70%; float: left;}
+		@include bp-xlarge {width:80%;}
+		@extend %clearfix;
+		div.msg {
+			//text-align: center;
+			padding-left: 30px;
+			h3 {
+				margin: 30px 0;
+				color:#3333CC;
+				font-style: italic;
+			}
+		}
+		div.quote {
+			text-align: right;
+			margin: 0;
+			padding: 0;
+			div {
+				@extend %clearfix;
+				margin:0;
+				padding: 10px 10px 10px 0;
+				img {
+					margin: 0 0 0 15px;
+					float: right;
+					width: 40%;
+					@include border-radius;
+					@include bp-medium {
+						width: 35%;
+					}
+					@include bp-xlarge {
+						margin-left: 50px;
+						width: 20%;
+					}
+				}
+				h3 {
+					color: #141414;
+					margin-top: 0;
+					margin-bottom: 10px;
+					font-style: italic;
+				}
+				p {
+					font-style: italic;
+					color: #444;
+					font-size: 80%;
+				}
+			}
+		}
+		div.dummy:before, div.dummy:after {
+			content: " ";
+			display: table;
+			clear: both;
+		}
+		div.list {
 			padding:20px 0;
-			//@include border-radius;
+			@include bp-medium {padding-left: 20px;}
 			border-top: 1px solid #999;
-			//border-bottom: 1px solid #999;
 			margin: 15px 0;
-			//@include box-shadow;
 			@extend %clearfix;
 			img {
-				width: 35%;
+				width: 45%;
 				float: left;
+				@include bp-xlarge {
+					width: 35%;
+				}
 				margin-right: 40px;
 			}
 			h5 {
@@ -349,39 +406,98 @@ footer {
 					color: #eee;
 				}
 			}
-			&.dummy {
-				box-shadow:none;
-				border: none;
-				margin-bottom: 0;
+		}
+		div.tile {
+			padding:10px;
+			@include bp-medium {padding-left: 20px;}
+			border-left: 1px solid #999;
+			// border-right: 1px solid #999;
+			margin: 15px 0;
+			width: 100%;
+			float: left;
+			@include bp-medium {
+				width: 33.33%;
 			}
-			&.quote {
-				text-align: right;
-				margin: 0 0 -15px 0;
-				padding: 0;
-				border: none;
-				box-shadow: none;
-				border-radius: 0;
-				div {
-					border: none;
-					margin-top:0;
-					box-shadow: none;
-					img {
-						margin: 0 0 0 50px;
-						float: right;
-						width: 20%;
+			img {
+				float: left;
+				width: 50%;
+				margin: 0 10px 10px 0;
+				@include bp-medium {
+					float: none;
+					width: auto;
+					max-width: 100%;
+					height: auto;
+				}
+			}
+			h5 {
+				margin: 0;
+				padding: 10px 0 0 0;
+				font-weight: bold;
+				color: #141414;
+				@include bp-medium {
+					padding-bottom: 5px;
+					font-size: 80%;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+				@include bp-xlarge {font-size: 100%;}
+			}
+			p {
+				font-size: 90%;
+				@include bp-medium {font-size: 70%;}
+				@include bp-xlarge {font-size: 90%;}
+				color: #444;
+				&.description {
+					@include bp-medium {
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
 					}
-					h3 {
+				}
+				&.price {
+					//margin-top: 35px;
+					span {
+						font-weight: bold;
 						color: #141414;
-						margin-top: 0;
-						font-style: italic;
-					}
-					p {
-						font-style: italic;
-						color: #444;
-						font-size: 80%;
 					}
 				}
 			}
+			button {
+				@include bp-medium {font-size: 70%;}
+				@include bp-xlarge {font-size: 90%;}
+				color: #141414;
+				padding: 3px 8px;
+				background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+				outline: none;
+				border: 1px solid transparent;
+				margin-bottom: 5px;
+				@include border-radius;
+				@include transition(.2s ease all);
+				&:hover {
+					background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
+					color: #eee;
+				}
+			}
+		}
+
+		//Animation:
+		div.tile.ng-enter, div.tile.ng-leave, div.list.ng-enter, div.list.ng-leave {
+			@include transition(0.2s ease all);
+		}
+		//Appear:
+		div.tile.ng-enter, div.list.ng-enter {
+			opacity: 0;
+		}
+		div.tile.ng-enter-active, div.list.ng-enter-active {
+			opacity: 1;
+		}
+		//Disappear:
+		div.tile.ng-leave, div.list.ng-leave {
+			opacity: 1;
+		}
+		div.tile.ng-leave-active, div.list.ng-leave-active {
+			opacity: 0;
 		}
 	}
 	div.pagination {
@@ -394,11 +510,14 @@ footer {
 			padding: 5px 10px;
 			border: 1px solid #141414;
 			@include border-radius(3px);
+			@include transition(.3s ease all);
 			&.active {
-				background-color: #999;
+				color: #eee;
+				background-color: #141414;
 			}
 			&:hover {
-				background-color: yellow;
+				background-color: #E46A52;
+				color: #eee;
 			}
 		}
 	}

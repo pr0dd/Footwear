@@ -67,10 +67,11 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.brandVals = []; //ng-model values container for brand filter:
 	$scope.sizeVals = []; //ng-model values container for size filter:
 	$scope.seasonVals = []; //ng-model values container for season filter:
-	$scope.viewClass = "tile";
+	$scope.viewClass = "list";
 	$scope.pageSize = currentPageSize;
 	$scope.selectedPage = 1;
 	$scope.switchQuote = null;
+	$scope.noResults = false;
 
 	//Sliders:
 	$scope.mainSlider = mainSlider;
@@ -149,6 +150,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 		} else {
 			source.splice(source.indexOf(newItem),1);
 		}
+		$scope.setPage(1);
 	}
 	$scope.setViewClass = function(value) {
 		$scope.viewClass = value;
@@ -207,6 +209,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	}
 	//Pagination:
 	$scope.setPage = function(page){
+		if($scope.selectedPage == page) return;
     $scope.selectedPage = page;
   }
 	$scope.getPageClass = function(page) {

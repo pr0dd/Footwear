@@ -26,6 +26,7 @@ angular.module("customDirectives", [])
                     break;
                 }
               }
+              scope.setPage(1);
             });
           }
 })
@@ -360,5 +361,19 @@ angular.module("customDirectives", [])
       });
 
     }
+  }
+})
+//Display a message when selected filters match no results;
+.directive("noMatch", function(){
+  return function(scope, element, attrs){
+    scope.$watch(
+      function(){
+        return element.children().length;
+      }, 
+      function(newValue, oldValue){
+        if(newValue == 3) scope.noResults = true;
+        if(newValue > 3) scope.noResults = false;
+      }
+    );
   }
 });

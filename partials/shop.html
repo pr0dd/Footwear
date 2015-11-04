@@ -15,12 +15,12 @@
 			<div>
 				<p>
 					Min:
-					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.min">&nbsp
+					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.min"><br>
 					<input number-only type="text" ng-model="data.min">
 				</p>
 				<p>
 					Max:
-					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.max">&nbsp
+					<input ng-min="{{min}}" ng-max="{{max}}" type="range" ng-model="data.max"><br>
 					<input number-only type="text" ng-model="data.max">
 				</p>
 			</div>
@@ -66,7 +66,7 @@
 		</div>
 
 	</div>
-	<div class="col l9 products">
+	<div class="col l9 products" no-match>
 		<div class="col quote" ng-switch on="switchQuote">
 			<div ng-switch-when="Men">
 				<img src="images/q2.jpg">
@@ -90,10 +90,11 @@
 			</div>
 		</div>
 		<div class="dummy"></div>
-		<div ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn | range:selectedPage:pageSize">
+		<div class="msg" ng-show="noResults"><h3>The selected filters match no results</h3></div>
+		<div ng-cloak ng-class="viewClass" ng-repeat="item in data.products | filter:categoryFilterFn | filter:minPriceFilterFn | filter:maxPriceFilterFn | filter:typeFilterFn | filter: brandFilterFn | filter: sizeFilterFn | filter: seasonFilterFn | range:selectedPage:pageSize">
 			<img ng-src="images/{{item.pics[1]}}">
 			<h5>{{item.name}}</h5>
-			<p>{{item.description}}</p>
+			<p class="description">{{item.description}}</p>
 			<p class="price">Price: <span>{{item.price | currency}}$</span></p>
 			<button ng-click="addToCart(item)">Add to cart</button>
 			<button ng-click="viewDetails(item)">View details</button>

@@ -1,9 +1,9 @@
-header .logo div.title, footer div.container div div.mail, .shop div.products div, .frontpage div.services, .frontpage div.services div {
+header .logo div.title, footer div.container div div.mail, .shop div.products, .shop div.products div.quote div, .shop div.products div.list, .frontpage div.services, .frontpage div.services div {
   *zoom: 1; }
-  header .logo div.title:before, footer div.container div div.mail:before, .shop div.products div:before, .frontpage div.services:before, .frontpage div.services div:before, header .logo div.title:after, footer div.container div div.mail:after, .shop div.products div:after, .frontpage div.services:after, .frontpage div.services div:after {
+  header .logo div.title:before, footer div.container div div.mail:before, .shop div.products:before, .shop div.products div.quote div:before, .shop div.products div.list:before, .frontpage div.services:before, .frontpage div.services div:before, header .logo div.title:after, footer div.container div div.mail:after, .shop div.products:after, .shop div.products div.quote div:after, .shop div.products div.list:after, .frontpage div.services:after, .frontpage div.services div:after {
     content: " ";
     display: table; }
-  header .logo div.title:after, footer div.container div div.mail:after, .shop div.products div:after, .frontpage div.services:after, .frontpage div.services div:after {
+  header .logo div.title:after, footer div.container div div.mail:after, .shop div.products:after, .shop div.products div.quote div:after, .shop div.products div.list:after, .frontpage div.services:after, .frontpage div.services div:after {
     clear: both; }
 
 /*STICKY FOOTER*/
@@ -288,6 +288,13 @@ footer {
         border-radius: 3px; }
 
 /*SHOP*/
+@media only screen and (min-width: 601px) {
+  .shop div.filters {
+    width: 30%;
+    float: left; } }
+@media only screen and (min-width: 1300px) {
+  .shop div.filters {
+    width: 20%; } }
 .shop div.filters h5 {
   font-weight: bold;
   font-style: italic;
@@ -332,6 +339,9 @@ footer {
           background: linear-gradient(#b7b7b7 49%, #e7e7e7 50%), #e7e7e7; }
         .shop div.filters h5 + div p button:active {
           border: 1px solid #999; }
+      @media only screen and (min-width: 601px) {
+        .shop div.filters h5 + div p input[type=text], .shop div.filters h5 + div p input[type=range] {
+          width: 90%; } }
       .shop div.filters h5 + div p input[type=text] {
         border: 1px solid #999;
         -moz-border-radius: 3px;
@@ -341,28 +351,82 @@ footer {
         padding: 5px 0; }
         .shop div.filters h5 + div p input[type=text]:focus {
           border: 1px solid #4CAF50; }
-.shop div.products div {
+@media only screen and (min-width: 601px) {
+  .shop div.products {
+    width: 70%;
+    float: left; } }
+@media only screen and (min-width: 1300px) {
+  .shop div.products {
+    width: 80%; } }
+.shop div.products div.msg {
+  padding-left: 30px; }
+  .shop div.products div.msg h3 {
+    margin: 30px 0;
+    color: #3333CC;
+    font-style: italic; }
+.shop div.products div.quote {
+  text-align: right;
+  margin: 0;
+  padding: 0; }
+  .shop div.products div.quote div {
+    margin: 0;
+    padding: 10px 10px 10px 0; }
+    .shop div.products div.quote div img {
+      margin: 0 0 0 15px;
+      float: right;
+      width: 40%;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -ms-border-radius: 5px;
+      border-radius: 5px; }
+      @media only screen and (min-width: 601px) {
+        .shop div.products div.quote div img {
+          width: 35%; } }
+      @media only screen and (min-width: 1300px) {
+        .shop div.products div.quote div img {
+          margin-left: 50px;
+          width: 20%; } }
+    .shop div.products div.quote div h3 {
+      color: #141414;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-style: italic; }
+    .shop div.products div.quote div p {
+      font-style: italic;
+      color: #444;
+      font-size: 80%; }
+.shop div.products div.dummy:before, .shop div.products div.dummy:after {
+  content: " ";
+  display: table;
+  clear: both; }
+.shop div.products div.list {
   padding: 20px 0;
   border-top: 1px solid #999;
   margin: 15px 0; }
-  .shop div.products div img {
-    width: 35%;
+  @media only screen and (min-width: 601px) {
+    .shop div.products div.list {
+      padding-left: 20px; } }
+  .shop div.products div.list img {
+    width: 45%;
     float: left;
     margin-right: 40px; }
-  .shop div.products div h5 {
+    @media only screen and (min-width: 1300px) {
+      .shop div.products div.list img {
+        width: 35%; } }
+  .shop div.products div.list h5 {
     margin: 0;
     padding: 10px 0;
     font-weight: bold;
     color: #141414; }
-  .shop div.products div p {
+  .shop div.products div.list p {
     font-size: 90%;
     color: #444; }
-    .shop div.products div p.price {
+    .shop div.products div.list p.price {
       margin-top: 35px; }
-      .shop div.products div p.price span {
+      .shop div.products div.list p.price span {
         font-weight: bold;
         color: #141414; }
-  .shop div.products div button {
+  .shop div.products div.list button {
     color: #141414;
     padding: 3px 8px;
     background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
@@ -377,36 +441,102 @@ footer {
     -ms-transition: 0.2s ease all;
     -o-transition: 0.2s ease all;
     transition: 0.2s ease all; }
-    .shop div.products div button:hover {
+    .shop div.products div.list button:hover {
       background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
       color: #eee; }
-  .shop div.products div.dummy {
-    box-shadow: none;
-    border: none;
-    margin-bottom: 0; }
-  .shop div.products div.quote {
-    text-align: right;
-    margin: 0 0 -15px 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 0; }
-    .shop div.products div.quote div {
-      border: none;
-      margin-top: 0;
-      box-shadow: none; }
-      .shop div.products div.quote div img {
-        margin: 0 0 0 50px;
-        float: right;
-        width: 20%; }
-      .shop div.products div.quote div h3 {
-        color: #141414;
-        margin-top: 0;
-        font-style: italic; }
-      .shop div.products div.quote div p {
-        font-style: italic;
-        color: #444;
-        font-size: 80%; }
+.shop div.products div.tile {
+  padding: 10px;
+  border-left: 1px solid #999;
+  margin: 15px 0;
+  width: 100%;
+  float: left; }
+  @media only screen and (min-width: 601px) {
+    .shop div.products div.tile {
+      padding-left: 20px; } }
+  @media only screen and (min-width: 601px) {
+    .shop div.products div.tile {
+      width: 33.33%; } }
+  .shop div.products div.tile img {
+    float: left;
+    width: 50%;
+    margin: 0 10px 10px 0; }
+    @media only screen and (min-width: 601px) {
+      .shop div.products div.tile img {
+        float: none;
+        width: auto;
+        max-width: 100%;
+        height: auto; } }
+  .shop div.products div.tile h5 {
+    margin: 0;
+    padding: 10px 0 0 0;
+    font-weight: bold;
+    color: #141414; }
+    @media only screen and (min-width: 601px) {
+      .shop div.products div.tile h5 {
+        padding-bottom: 5px;
+        font-size: 80%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; } }
+    @media only screen and (min-width: 1300px) {
+      .shop div.products div.tile h5 {
+        font-size: 100%; } }
+  .shop div.products div.tile p {
+    font-size: 90%;
+    color: #444; }
+    @media only screen and (min-width: 601px) {
+      .shop div.products div.tile p {
+        font-size: 70%; } }
+    @media only screen and (min-width: 1300px) {
+      .shop div.products div.tile p {
+        font-size: 90%; } }
+    @media only screen and (min-width: 601px) {
+      .shop div.products div.tile p.description {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; } }
+    .shop div.products div.tile p.price span {
+      font-weight: bold;
+      color: #141414; }
+  .shop div.products div.tile button {
+    color: #141414;
+    padding: 3px 8px;
+    background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+    outline: none;
+    border: 1px solid transparent;
+    margin-bottom: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all; }
+    @media only screen and (min-width: 601px) {
+      .shop div.products div.tile button {
+        font-size: 70%; } }
+    @media only screen and (min-width: 1300px) {
+      .shop div.products div.tile button {
+        font-size: 90%; } }
+    .shop div.products div.tile button:hover {
+      background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
+      color: #eee; }
+.shop div.products div.tile.ng-enter, .shop div.products div.tile.ng-leave, .shop div.products div.list.ng-enter, .shop div.products div.list.ng-leave {
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all; }
+.shop div.products div.tile.ng-enter, .shop div.products div.list.ng-enter {
+  opacity: 0; }
+.shop div.products div.tile.ng-enter-active, .shop div.products div.list.ng-enter-active {
+  opacity: 1; }
+.shop div.products div.tile.ng-leave, .shop div.products div.list.ng-leave {
+  opacity: 1; }
+.shop div.products div.tile.ng-leave-active, .shop div.products div.list.ng-leave-active {
+  opacity: 0; }
 .shop div.pagination {
   text-align: center;
   padding: 10px 0;
@@ -419,11 +549,18 @@ footer {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     -ms-border-radius: 3px;
-    border-radius: 3px; }
+    border-radius: 3px;
+    -webkit-transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -ms-transition: 0.3s ease all;
+    -o-transition: 0.3s ease all;
+    transition: 0.3s ease all; }
     .shop div.pagination a.active {
-      background-color: #999; }
+      color: #eee;
+      background-color: #141414; }
     .shop div.pagination a:hover {
-      background-color: yellow; }
+      background-color: #E46A52;
+      color: #eee; }
 
 /*MODAL*/
 .modal {
