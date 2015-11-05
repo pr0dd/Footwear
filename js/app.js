@@ -192,7 +192,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	}
 	//Add to cart:
 	$scope.addToCart = function(product){
-        cart.addProduct(product.id, product.name, product.price);
+        cart.addProduct(product.id, product.name, product.price, product.size, product.color);
         if($scope.modalShown) {
 			$scope.modalShown = false;
 			$scope.modalProduct = null;
@@ -228,7 +228,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 			$scope.showCart = true;
 		}
 	});
-	
+
 	$scope.goTo = function(a){
 		$location.path("/"+a);
 	}

@@ -3,7 +3,7 @@ angular.module("cart",[])
 		var cartData = [];
 
 		return {
-			addProduct: function(id,name,price) {
+			addProduct: function(id,name,price,size,color) {
 				var addedToExistingItem = false;
 				for(var i = 0; i < cartData.length; i++){
 					if(cartData[i].id == id) {
@@ -17,7 +17,11 @@ angular.module("cart",[])
 						count: 1,
 						id: id,
 						name: name,
-						price: price
+						price: price,
+						sizes: size,
+						selectedSize: null,
+						colors: color,
+						selectedColor: null
 					});
 				}
 			},

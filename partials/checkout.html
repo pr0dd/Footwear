@@ -1,23 +1,28 @@
 <div class="container checkout">
 	<div ng-show="cartData.length==0" class="emptycart">
-		<h2>Your cart is empty</h2>
-		<a href="#/">Back to products</a>
+		<h3>Your cart is empty</h3>
+		<a href="#/shop">Back to products</a>
 	</div>
-	<div ng-hide="cartData.length==0">
-		<h2>Your cart</h2>
+	<div ng-hide="cartData.length==0" class="items">
+		<h3>Your cart</h3>
 		<table>
 			<thead>
 				<tr>
 					<th>Quantity</th>
 					<th>Name</th>
+					<th>Size</th>
+					<th>Color</th>
 					<th>Price</th>
 					<th>Sub-Total</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in cartData">
-					<td>{{item.count}}</td>
+					<td><input type="number" min="0" ng-model="item.count"></td>
 					<td>{{item.name}}</td>
+					<td><select ng-model="item.selectedSize" ng-options = "size for size in item.sizes"><option value="">Pick size</option></select></td>
+					<td><select ng-model="item.selectedColor" ng-options = "color for color in item.colors"><option value="">Pick color</option></select></td>
 					<td>{{item.price | currency}}</td>
 					<td>{{(item.price*item.count) | currency}}</td>
 					<td><button ng-click="remove(item)">Remove</button></td>
@@ -25,13 +30,13 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="3" style="text-align:right;font-weight:bold">Total amount:</td>
+					<td colspan="5" style="text-align:right;font-weight:bold">Total amount:</td>
 					<td style="font-weight:bold">{{total() | currency}}</td>
 				</tr>
 			</tfoot>
 		</table>
 		<nav>
-			<a href="#/">Continue shopping</a>
+			<a href="#/shop">Continue shopping</a>
 			<a href="#/shipping">Finalize the order</a>
 		</nav>
 	</div>
