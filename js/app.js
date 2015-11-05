@@ -242,13 +242,22 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 
 app.controller("productCtrl", ["$scope", "$routeParams", function($scope, $routeParams){
 	var id = $routeParams['id'];
+	$scope.slides = [];
 	var getProduct = function(id){
 		var result;
+		$scope.slides.length = 0;
+
 		for(var i = 0; i<$scope.data.products.length; i++){
 			if($scope.data.products[i].id == id){
 				result = $scope.data.products[i];
+				break;
 			}
 		}
+		
+		for(var i = 1; i<result.pics.length; i++){
+			$scope.slides.push({src: result.pics[i]});
+		}
+
 		return result;
 	}
 

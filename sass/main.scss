@@ -688,197 +688,288 @@ footer {
 			height: auto;
 			cursor: pointer;
 		}
-
 	}
-	.slider {
-		position: relative;
-		text-align: center;
-		button {
-			outline: none;
-			line-height: 1;
-			background: transparent;
-			padding: 4px 0;
-			@include bp-medium {padding: 8px 0;}
-			border: none;
-			text-shadow: 0 0 2px #fff;
-			@include transition(.2s ease all);
-			i {
-				font-size: 24px;
-				@include bp-medium {font-size: 36px;}
-				@include bp-large {font-size: 42px;}
-				@include bp-xlarge {font-size: 56px;}
+}
+.product-details {
+	padding-top: 15px;
+	padding-bottom: 20px;
+	div.holder, div.details {
+		@include bp-medium {width: 50%; float:left;}
+	}
+	div.holder {
+		overflow: hidden;
+	}
+	div.details {
+		@include bp-medium { padding-left: 25px; }
+		@include bp-xlarge { padding-left: 35px; }
+		h3 {
+			color: #141414;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		p {
+			color: #444;
+			font-size: 90%;
+			span {
+				&.green {color: #4CAF50;}
+				&.red {color: #F44336;}
 			}
+			&.description {font-style: italic;}
+			&.size {margin-bottom: 5px;}
+			&.color {margin-bottom: 5px;}
+			&.price {
+				margin-top: 30px;
+				span {
+					color: #141414;
+					font-weight: bold; 
+					font-size: 100%;
+				}
+			}
+		}
+		ul {
+			li {display: inline-block; padding: 3px 4px; margin: 3px; color: #444; @include border-radius(2px);}
+			&.size {
+				li {
+					border: 1px solid #4CAF50;
+				}
+			}
+			&.color {
+				li {
+					width: 28px; 
+					height: 28px;
+				}
+			}
+		}
+		button {
+			font-size: 90%;
+			color: #141414;
+			padding: 3px 8px;
+			background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+			outline: none;
+			border: 1px solid transparent;
+			margin-bottom: 5px;
+			@include border-radius;
+			@include transition(.2s ease all);
 			&:hover {
-				background-color: rgba(0,0,0,0.5);
+				background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
 				color: #eee;
 			}
 		}
-		.slide {
-			overflow: hidden;
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
+	}
+	div.dummy:before, div.dummy:after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+	div.services {
+		@extend %clearfix;
+		padding: 70px 0 10px;
+		div {
+			@extend %clearfix;
 			div {
-				display: inline-block;
+				padding: 10px;
+				h4 {
+					color: #444;
+					font-size: 16px;
+					@include bp-medium {font-size: 20px;}
+				}
+				p {
+					color: #999;
+					font-size: 80%;
+					font-style: italic;
+				}
 			}
-			img {
-				max-width: 100%;
-				height: auto;
-				cursor: pointer;
-			}
-			.img-holder {
-				position: relative;
-				cursor: pointer;
-				// img {cursor:none;}
-				.info {
-					position: absolute;
-					bottom:0;
-					left:0;
-					right:0;
-					padding:0;
+		}
+	}
+}
+.slider {
+	position: relative;
+	text-align: center;
+	button {
+		outline: none;
+		line-height: 1;
+		background: transparent;
+		padding: 4px 0;
+		@include bp-medium {padding: 8px 0;}
+		border: none;
+		text-shadow: 0 0 2px #fff;
+		@include transition(.2s ease all);
+		i {
+			font-size: 24px;
+			@include bp-medium {font-size: 36px;}
+			@include bp-large {font-size: 42px;}
+			@include bp-xlarge {font-size: 56px;}
+		}
+		&:hover {
+			background-color: rgba(0,0,0,0.5);
+			color: #eee;
+		}
+	}
+	.slide {
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		div {
+			display: inline-block;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+			cursor: pointer;
+		}
+		.img-holder {
+			position: relative;
+			cursor: pointer;
+			// img {cursor:none;}
+			.info {
+				position: absolute;
+				bottom:0;
+				left:0;
+				right:0;
+				padding:0;
+				@include bp-medium {
+					padding-bottom: 10px;
+				}
+				@include bp-xlarge {
+					padding-bottom: 20px;
+				}
+				p {
+					font-size: 50%;
+					color: #444;
+					margin: 0;
+					line-height: 1.2;
+					text-transform: uppercase;
 					@include bp-medium {
-						padding-bottom: 10px;
+						font-size: 80%;
+						line-height: 1.3;
 					}
 					@include bp-xlarge {
-						padding-bottom: 20px;
+						font-size: 100%;
+						line-height: 1.5;
 					}
-					p {
-						font-size: 50%;
-						color: #444;
-						margin: 0;
-						line-height: 1.2;
-						text-transform: uppercase;
-						@include bp-medium {
-							font-size: 80%;
-							line-height: 1.3;
-						}
-						@include bp-xlarge {
-							font-size: 100%;
-							line-height: 1.5;
-						}
-						&.type {
-							text-decoration: underline;
-						}
-						&.type + p {
-							text-transform: none;
-							font-style: italic;
-						}
-						&.price {
-							font-weight: bold;
-						}
+					&.type {
+						text-decoration: underline;
 					}
-				}
-				.overlay {
-					position: absolute;
-					top:0;
-					left:0;
-					right:0;
-					bottom:0;
-					background: rgba(0,0,0,0.5);
-					.buttons {
-						position: relative;
-						width:100%;
-						height: 100%;
-						button.quick-look, button.details {
-							position: absolute;
-							top:0;
-							width: 50%;
-							padding:2px;
-							//line-height: 1;
-							i {
-								font-size: 24px;
-								@include bp-medium {font-size: 36px;}
-								@include bp-large {font-size: 42px;}
-								@include bp-xlarge {font-size: 48px;}
-							}
-						}
-						button.quick-look {
-							left:0;
-						}
-						button.details {
-							right:0;
-						}
+					&.type + p {
+						text-transform: none;
+						font-style: italic;
 					}
-					//Animation:
-					&.ng-hide-remove, &.ng-hide-add {
-						@include transition(0.4s ease all);
-					}
-					//Appear:
-					&.ng-hide-remove {
-						opacity: 0;
-						//@include transform( translateX(-50%) );
-					}
-					&.ng-hide-remove-active {
-						opacity: 1;
-						//@include transform( translateX(0) );
-					}
-					//Disappear:
-					&.ng-hide-add {
-						opacity: 1;
-						//@include transform( translateX(0) );
-					}
-					&.ng-hide-add-active {
-						opacity: 0;
-						//@include transform( translateX(-50%) );
+					&.price {
+						font-weight: bold;
 					}
 				}
 			}
-		}
-		//Animation:
-		.slide.ng-hide-remove, .slide.ng-hide-add {
-			@include transition(1s ease all);
-		}
-		//Appear:
-		.slide.ng-hide-remove {
-			opacity: 0;
-			@include transform( translateX(100%) );
-		}
-		.slide.ng-hide-remove-active {
-			opacity: 1;
-			@include transform( translateX(0) );
-		}
-		//Disappear:
-		.slide.ng-hide-add {
-			opacity: 1;
-			@include transform( translateX(0) );
-		}
-		.slide.ng-hide-add-active {
-			opacity: 0;
-			@include transform( translateX(-100%) );
-		}
-		
-		button#left {
-			position: absolute;
-			left: 0;
-			top:50%;
-			@include transform(translateY(-50%));
-		}
-		button#right {
-			position: absolute;
-			right: 0;
-			top:50%;
-			@include transform(translateY(-50%));
-		}
-		ul.dots {
-			position: absolute;
-			bottom: 5px;
-			left: 0;
-			right: 0;
-			margin: 0;
-			padding: 0;
-			li {
-				display: inline-block;
-				background-color: #fff;
-				border: 1px solid #444;
-				width: 12px;
-				height: 12px;
-				margin: 0 3px;
-				border-radius: 50%;
-				cursor: pointer;
-				&.active {
-					background-color: #595959;
+			.overlay {
+				position: absolute;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background: rgba(0,0,0,0.5);
+				.buttons {
+					position: relative;
+					width:100%;
+					height: 100%;
+					button.quick-look, button.details {
+						position: absolute;
+						top:0;
+						width: 50%;
+						padding:2px;
+						//line-height: 1;
+						i {
+							font-size: 24px;
+							@include bp-medium {font-size: 36px;}
+							@include bp-large {font-size: 42px;}
+							@include bp-xlarge {font-size: 48px;}
+						}
+					}
+					button.quick-look {
+						left:0;
+					}
+					button.details {
+						right:0;
+					}
 				}
+				//Animation:
+				&.ng-hide-remove, &.ng-hide-add {
+					@include transition(0.4s ease all);
+				}
+				//Appear:
+				&.ng-hide-remove {
+					opacity: 0;
+					//@include transform( translateX(-50%) );
+				}
+				&.ng-hide-remove-active {
+					opacity: 1;
+					//@include transform( translateX(0) );
+				}
+				//Disappear:
+				&.ng-hide-add {
+					opacity: 1;
+					//@include transform( translateX(0) );
+				}
+				&.ng-hide-add-active {
+					opacity: 0;
+					//@include transform( translateX(-50%) );
+				}
+			}
+		}
+	}
+	//Animation:
+	.slide.ng-hide-remove, .slide.ng-hide-add {
+		@include transition(1s ease all);
+	}
+	//Appear:
+	.slide.ng-hide-remove {
+		opacity: 0;
+		@include transform( translateX(100%) );
+	}
+	.slide.ng-hide-remove-active {
+		opacity: 1;
+		@include transform( translateX(0) );
+	}
+	//Disappear:
+	.slide.ng-hide-add {
+		opacity: 1;
+		@include transform( translateX(0) );
+	}
+	.slide.ng-hide-add-active {
+		opacity: 0;
+		@include transform( translateX(-100%) );
+	}
+	
+	button#left {
+		position: absolute;
+		left: 0;
+		top:50%;
+		@include transform(translateY(-50%));
+	}
+	button#right {
+		position: absolute;
+		right: 0;
+		top:50%;
+		@include transform(translateY(-50%));
+	}
+	ul.dots {
+		position: absolute;
+		bottom: 5px;
+		left: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+			background-color: #fff;
+			border: 1px solid #444;
+			width: 12px;
+			height: 12px;
+			margin: 0 3px;
+			border-radius: 50%;
+			cursor: pointer;
+			&.active {
+				background-color: #595959;
 			}
 		}
 	}

@@ -1,17 +1,56 @@
 <div class="container product-details">
-	<div class="col">
-		<p><b>Product Details</b></p>
-		<a href="#/shop">Go back to shop</a>
+	<div class="holder">
+		<div class="slider" slider source="slides" showdots="true" duration="5500"></div>
 	</div>
-	<div>
-		<div>
-			<h3>{{product.name}} <span>{{product.price | currency}}</span></h3>
-			<span>{{product.description}}</span>
-			<p>Available colors:</p>
-			<ul>
-				<li ng-repeat="item in product.color">{{item}}</li>
-			</ul>
-			<button ng-click="addToCart(product)">Add to cart</button>
-		</div>
+	<div class="details">
+		<h3>{{product.name}}</h3>
+		<p> 
+			<span ng-show="product.available" class="green"> In stock </span>
+			<span ng-hide="product.available" class="red"> Out of stock </span>
+			/ {{product.category}} / Article: {{product.id}} / 
+		</p>
+
+		<p class="description">{{product.description}}</p>
+		<p>Top: {{product.materialTop}} / Bottom: {{product.materialBtm}}</p>
+		<p class="size">Sizes:</p>
+		<ul class="size">
+			<li ng-repeat = "size in product.size">{{size}}</li>
+		</ul>
+		<p class="color">Colors:</p>
+		<ul class="color">
+			<li ng-repeat="item in product.color" ng-style="{'background-color':item}"></li>
+		</ul>
+		<p class="price">
+			Price: <span> {{product.price}}$</span>
+		</p>
+		<button ng-click="addToCart(product)">Add to cart</button>
+		<button ng-click="goTo('shop')">Back to shop</button>
 	</div>
+	<div class="dummy"></div>
+	<div class="services">
+   		<div class="col m6">
+	   		<div class="col s6">
+	   			<img src="images/sr1.png" alt="delivery">
+	   			<h4>Free delivery</h4>
+	   			<p>Free delivery on the territory of our country</p>
+	   		</div>
+	   		<div class="col s6">
+	   			<img src="images/sr2.png" alt="sizes">
+	   			<h4>Variety of sizes</h4>
+	   			<p>Vast variety of sizes. Partial possibility of rejecting the delivered order</p>
+	   		</div>
+   		</div>
+   		<div class="col m6">
+	   		<div class="col s6">
+	   			<img src="images/sr3.png" alt="payment">
+	   			<h4>Payment options</h4>
+	   			<p>Online payment or cash upon delivery</p>
+	   		</div>
+	   		<div class="col s6">
+	   			<img src="images/sr4.png" alt="guaranties">
+	   			<h4>Guaranties of quality</h4>
+	   			<p>Only original goods of the world-known brands</p>
+	   		</div>
+   		</div>
+   	</div>
 </div>
