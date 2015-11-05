@@ -221,6 +221,14 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.toggleShow = function(a){
 		$scope[a] = !$scope[a];
 	}
+	//Set up a hander which will show categories and cart details if user goes to shop or product page:
+	$scope.$on("$routeChangeSuccess", function(){
+		if( $location.path().indexOf("/shop") == 0 || $location.path().indexOf("/product") == 0 ) {
+			$scope.showCats = true;
+			$scope.showCart = true;
+		}
+	});
+	
 	$scope.goTo = function(a){
 		$location.path("/"+a);
 	}
