@@ -850,6 +850,108 @@ footer {
 		}
 	}
 }
+.shipping-form {
+	text-align: center;
+	p {
+		font-style: italic;
+		color: #444;
+	}
+	form {
+		text-align: left;
+		h4 {
+			color: #444;
+			margin-bottom: 25px;
+			font-size: 20px;
+			@include bp-medium {font-size: 23px;}
+		}
+		@include bp-medium{ width: 55%; margin: 0 auto; }
+		.f-group {
+			position: relative;
+			margin-top: 15px;
+			margin-bottom: 30px;
+			span {
+				&.error {
+					display: block;
+					color: #D9571E;
+					font-style: italic;
+					padding-top: 8px;
+				}
+			}
+		}
+		.f-input,.f-textarea {
+			border:1px solid #444;
+			padding: 10px;
+			display: block;
+			width: 90%;
+			@include box-shadow;
+			&:focus~.f-label, &:valid~.f-label { top:-20px; color:#888; }
+		}
+		.f-textarea { max-width:90%; min-width:200px; }
+		.f-label {
+			position: absolute;
+			left: 5px;
+			top: 7px;
+			color: #888;
+			@include transition(.2s ease all);
+		}
+		.f-check {
+			padding-left: 10px;
+			.checkbox {display:inline-block; line-height:24px; margin: 0;}
+			.checkbox input[type=checkbox] {display:none;}
+			.checkbox input[type=checkbox]:checked + .checkmark:before {background:#E46A52;}
+			.checkbox input[type=checkbox]:checked + .checkmark:after {opacity:1;}
+			.checkmark:before {
+				content:'';
+				position:absolute;
+				width:20px;
+				height:20px;
+				border:1px solid #444;
+				@include box-shadow;
+			}
+			.checkmark {
+				position:relative;
+				display:inline-block;
+				vertical-align:top;
+				cursor:pointer;
+				width:20px;
+				height:20px;
+			}
+			.checkmark:after {
+				content:'';
+				position:absolute;
+				top:5px;
+				left:5px;
+				width:12px;
+				height:8px;
+				border:2px solid #fff;
+				border-top:none;
+				border-right:none;
+				@include transform(rotate(-45deg));
+			}
+		}
+		.f-button {
+			width: 90%;
+			text-align: center;
+			margin-top: 45px;
+			margin-bottom: 25px;
+			button {
+				font-size: 90%;
+				color: #141414;
+				padding: 3px 12px;
+				background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
+				outline: none;
+				border: 1px solid transparent;
+				margin-bottom: 5px;
+				@include border-radius;
+				@include transition(.2s ease all);
+				&:hover {
+					background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
+					color: #eee;
+				}
+			}							
+		}
+	}
+}
 .slider {
 	position: relative;
 	text-align: center;

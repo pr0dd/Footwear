@@ -1,25 +1,24 @@
 ﻿<div class="container shipping-form">
-  <h2>Check out now</h2>
-  <p>Please enter your details, and we'll ship your goods right away!</p>
+  <p>Enter your details and we'll ship your goods right away!</p>
 
   <form name="shippingForm" novalidate>
     
-    <h3>Ship to:</h3>
+    <h4>Ship to:</h4>
 
     <div class="f-group">
       <input class="f-input" type="text" name="name" ng-model="data.shipping.name" required/>
       <label class="f-label">Name</label>
-      <span class="error" ng-show="shippingForm.name.$error.required">
+      <span class="error" ng-show="shippingForm.name.$error.required && shippingForm.name.$dirty">
         Please enter your name
       </span>
     </div>
     
-    <h3>Address:</h3>
+    <h4>Address:</h4>
     
     <div class="f-group">
       <input class="f-input" type="text" name="street" ng-model="data.shipping.street" required/>
       <label class="f-label">Street</label>
-      <span class="error" ng-show="shippingForm.street.$error.required">
+      <span class="error" ng-show="shippingForm.street.$error.required && shippingForm.street.$dirty">
         Please enter a street address
       </span>
     </div>
@@ -27,7 +26,7 @@
     <div class="f-group">
       <input class="f-input" type="text" name="city" ng-model="data.shipping.city" required/>
       <label class="f-label">City</label>
-      <span class="error" ng-show="shippingForm.city.$error.required">
+      <span class="error" ng-show="shippingForm.city.$error.required && shippingForm.city.$dirty">
         Please enter your city
       </span>
     </div>
@@ -35,7 +34,7 @@
     <div class="f-group">
       <input class="f-input" type="text" name="zip" ng-model="data.shipping.zip" required/>
       <label class="f-label">Zip</label>
-      <span class="error" ng-show="shippingForm.zip.$error.required">
+      <span class="error" ng-show="shippingForm.zip.$error.required && shippingForm.zip.$dirty">
         Please enter your zip code
       </span>
     </div>
@@ -43,14 +42,20 @@
     <div class="f-group">
       <input class="f-input" type="text" name="country" ng-model="data.shipping.country" required/>
       <label class="f-label">Country</label>
-      <span class="error" ng-show="shippingForm.country.$error.required">
+      <span class="error" ng-show="shippingForm.country.$error.required && shippingForm.country.$dirty">
         Please enter your country
       </span>
     </div>
-
-    <div class="f-group t-area">
+    
+    <div class="f-check">
+      <label class="checkbox">
+        <input type="checkbox" ng-model="moreInfo" ng-click="!moreInfo">
+        <div class="checkmark"></div> Leave additional instructions
+      </label>
+    </div>
+    
+    <div class="f-group" ng-show="moreInfo">
       <textarea class="f-textarea" name="addInfo" ng-model="data.shipping.addInfo"></textarea>
-      <label class="f-label">Additional instructions</label>
     </div>
 
     <div class="f-button">
