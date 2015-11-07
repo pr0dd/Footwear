@@ -58,7 +58,7 @@
 		<div class="size">
 			<h5 anim-height speed="250">Size:</h5>
 			<div>
-				<p ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size'">
+				<p class="size" ng-repeat="item in data.products | filter:categoryFilterFn | arrayValues:'size' | orderBy: item">
 					<input type="checkbox" id="{{'size' + item}}" ng-model="sizeVals[$index]" ng-click="toggleFilter(item, productSize)">
 					<label for="{{'size' + item}}">{{item}}</label>
 				</p>

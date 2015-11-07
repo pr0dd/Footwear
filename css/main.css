@@ -41,6 +41,7 @@ ul {
     .container {
       width: 60%; } }
 
+/*ng-cloak styles, which don't work as expected, unfortunately...*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
@@ -163,6 +164,7 @@ header {
       header .cart {
         font-size: 100%; } }
     header .cart button {
+      color: #141414;
       background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
       outline: none;
       border: 1px solid transparent;
@@ -170,7 +172,15 @@ header {
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
       -ms-border-radius: 3px;
-      border-radius: 3px; }
+      border-radius: 3px;
+      -webkit-transition: 0.3s ease all;
+      -moz-transition: 0.3s ease all;
+      -ms-transition: 0.3s ease all;
+      -o-transition: 0.3s ease all;
+      transition: 0.3s ease all; }
+      header .cart button:hover {
+        color: #eee;
+        background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52; }
     header .cart .cartDetails div {
       padding-top: 5px; }
       header .cart .cartDetails div span {
@@ -180,13 +190,16 @@ header {
             font-size: 90%; } }
     header .cart .cartDetails button {
       line-height: 1;
+      padding: 0 2px;
+      color: #000;
+      background: linear-gradient(#e7e7e7 49%, #b7b7b7 50%), #b7b7b7;
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
       -ms-border-radius: 50%;
-      border-radius: 50%;
-      padding: 0 2px;
-      color: #000;
-      background: linear-gradient(#e7e7e7 49%, #b7b7b7 50%), #b7b7b7; }
+      border-radius: 50%; }
+      header .cart .cartDetails button:hover {
+        color: #D9571E;
+        background: linear-gradient(#b7b7b7 49%, #e7e7e7 50%), #e7e7e7; }
       header .cart .cartDetails button i {
         font-size: 16px; }
         @media only screen and (min-width: 1300px) {
@@ -284,7 +297,15 @@ footer {
         -moz-border-radius: 3px;
         -webkit-border-radius: 3px;
         -ms-border-radius: 3px;
-        border-radius: 3px; }
+        border-radius: 3px;
+        -webkit-transition: 0.3s ease all;
+        -moz-transition: 0.3s ease all;
+        -ms-transition: 0.3s ease all;
+        -o-transition: 0.3s ease all;
+        transition: 0.3s ease all; }
+        footer div.container div div.mail button:hover {
+          color: #eee;
+          background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52; }
 
 /*SHOP*/
 @media only screen and (min-width: 601px) {
@@ -315,6 +336,9 @@ footer {
       margin: 5px 0;
       color: #444;
       font-size: 90%; }
+      .shop div.filters h5 + div p.size {
+        display: inline-block;
+        padding: 2px 4px; }
       .shop div.filters h5 + div p:hover {
         color: #000; }
       .shop div.filters h5 + div p button {
@@ -522,20 +546,6 @@ footer {
     .shop div.products div.tile button:hover {
       background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
       color: #eee; }
-.shop div.products div.tile.ng-enter, .shop div.products div.tile.ng-leave, .shop div.products div.list.ng-enter, .shop div.products div.list.ng-leave {
-  -webkit-transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -ms-transition: 0.2s ease all;
-  -o-transition: 0.2s ease all;
-  transition: 0.2s ease all; }
-.shop div.products div.tile.ng-enter, .shop div.products div.list.ng-enter {
-  opacity: 0; }
-.shop div.products div.tile.ng-enter-active, .shop div.products div.list.ng-enter-active {
-  opacity: 1; }
-.shop div.products div.tile.ng-leave, .shop div.products div.list.ng-leave {
-  opacity: 1; }
-.shop div.products div.tile.ng-leave-active, .shop div.products div.list.ng-leave-active {
-  opacity: 0; }
 .shop div.pagination {
   text-align: center;
   padding: 10px 0;

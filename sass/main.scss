@@ -4,11 +4,11 @@
 .wrapper {
 	min-height: 100%;
 	margin: 0 auto -558px;
-	@include bp-medium {margin-bottom:-238px;} 
+	@include bp-medium { margin-bottom:-238px; } 
 }
 footer, .push {
 	height: 558px;
-	@include bp-medium {height:238px;}  
+	@include bp-medium { height:238px; }  
 }
 
 /*GENERIC STYLES*/
@@ -24,9 +24,9 @@ ul {
 	min-width:300px;
 	@include bp-medium {width:94%;}
 	@include bp-large {width:60%;}
-	//outline: 1px solid black;
 }
 
+/*ng-cloak styles, which don't work as expected, unfortunately...*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -74,10 +74,8 @@ header {
 		@include bp-medium {height: auto;}
 		padding-bottom: 5px;
 		ul {
-			//@extend %clearfix;
 			text-align: left;
 			li {
-				//outline: 1px solid blue;
 				line-height: 1;
 				display: inline-block;
 				padding: 5px;
@@ -130,11 +128,17 @@ header {
 		@include bp-medium {font-size:90%;}
 		@include bp-xlarge {font-size:100%;}
 		button {
+			color: #141414;
 			background: linear-gradient(#E46A52 49%, #C33B21 50%), #C33B21;
 			outline: none;
 			border: 1px solid transparent;
 			padding: 4px 15px;
 			@include border-radius(3px);
+			@include transition(.3s ease all);
+			&:hover {
+				color: #eee;
+				background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
+			}
 		}
 		.cartDetails {
 			div {
@@ -148,14 +152,16 @@ header {
 			}
 			button {
 				line-height: 1;
-				@include border-radius(50%);
 				padding:0 2px;
-				//padding: 1px 2px;
 				color: #000;
 				background: linear-gradient(#e7e7e7 49%, #b7b7b7 50%), #b7b7b7;
+				@include border-radius(50%);
+				&:hover {
+					color: #D9571E;
+					background: linear-gradient(#b7b7b7 49%, #e7e7e7 50%), #e7e7e7;
+				}
 				i {
 					font-size: 16px;
-					//@include bp-medium {font-size: 18px;}
 					@include bp-xlarge {font-size: 20px;}
 				}
 			}
@@ -244,6 +250,11 @@ footer {
 					border: 1px solid transparent;
 					padding: 0 15px;
 					@include border-radius(3px);
+					@include transition(0.3s ease all);
+					&:hover {
+						color: #eee;
+						background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
+					}
 				}
 			}
 		}
@@ -269,12 +280,15 @@ footer {
 			}
 			&+div {
 				overflow: hidden;
-				//outline: 1px solid black;
 				padding-left: 15px;
 				p {
 					margin: 5px 0;
 					color: #444;
 					font-size: 90%;
+					&.size {
+						display: inline-block;
+						padding: 2px 4px;
+					}
 					&:hover {
 						color: #000;
 					}
@@ -315,7 +329,6 @@ footer {
 		@include bp-xlarge {width:80%;}
 		@extend %clearfix;
 		div.msg {
-			//text-align: center;
 			padding-left: 30px;
 			h3 {
 				margin: 30px 0;
@@ -411,7 +424,6 @@ footer {
 			padding:10px;
 			@include bp-medium {padding-left: 20px;}
 			border-left: 1px solid #999;
-			// border-right: 1px solid #999;
 			margin: 15px 0;
 			width: 100%;
 			float: left;
@@ -456,7 +468,6 @@ footer {
 					}
 				}
 				&.price {
-					//margin-top: 35px;
 					span {
 						font-weight: bold;
 						color: #141414;
@@ -481,24 +492,24 @@ footer {
 			}
 		}
 
-		//Animation:
-		div.tile.ng-enter, div.tile.ng-leave, div.list.ng-enter, div.list.ng-leave {
-			@include transition(0.2s ease all);
-		}
-		//Appear:
-		div.tile.ng-enter, div.list.ng-enter {
-			opacity: 0;
-		}
-		div.tile.ng-enter-active, div.list.ng-enter-active {
-			opacity: 1;
-		}
-		//Disappear:
-		div.tile.ng-leave, div.list.ng-leave {
-			opacity: 1;
-		}
-		div.tile.ng-leave-active, div.list.ng-leave-active {
-			opacity: 0;
-		}
+		// //Animation:
+		// div.tile.ng-enter, div.tile.ng-leave, div.list.ng-enter, div.list.ng-leave {
+		// 	@include transition(0.2s ease all);
+		// }
+		// //Appear:
+		// div.tile.ng-enter, div.list.ng-enter {
+		// 	opacity: 0;
+		// }
+		// div.tile.ng-enter-active, div.list.ng-enter-active {
+		// 	opacity: 1;
+		// }
+		// //Disappear:
+		// div.tile.ng-leave, div.list.ng-leave {
+		// 	opacity: 1;
+		// }
+		// div.tile.ng-leave-active, div.list.ng-leave-active {
+		// 	opacity: 0;
+		// }
 	}
 	div.pagination {
 		text-align: center;
@@ -531,7 +542,6 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-
   .overlay {
   	position: absolute;
 	  z-index: 9999;
@@ -811,7 +821,6 @@ footer {
 	div.items {
 		overflow-x: auto;
 		table {
-			//overflow-x: auto;
 			border-collapse: collapse;
 			border: 1px solid #999;
 			width: 100%;
@@ -1004,7 +1013,6 @@ footer {
 		.img-holder {
 			position: relative;
 			cursor: pointer;
-			// img {cursor:none;}
 			.info {
 				position: absolute;
 				bottom:0;
@@ -1059,7 +1067,6 @@ footer {
 						top:0;
 						width: 50%;
 						padding:2px;
-						//line-height: 1;
 						i {
 							font-size: 24px;
 							@include bp-medium {font-size: 36px;}
@@ -1081,20 +1088,16 @@ footer {
 				//Appear:
 				&.ng-hide-remove {
 					opacity: 0;
-					//@include transform( translateX(-50%) );
 				}
 				&.ng-hide-remove-active {
 					opacity: 1;
-					//@include transform( translateX(0) );
 				}
 				//Disappear:
 				&.ng-hide-add {
 					opacity: 1;
-					//@include transform( translateX(0) );
 				}
 				&.ng-hide-add-active {
 					opacity: 0;
-					//@include transform( translateX(-50%) );
 				}
 			}
 		}

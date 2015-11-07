@@ -68,7 +68,7 @@ app.controller("mainCtrl", ["$scope","$http","baseUrl", "activeClass", "$locatio
 	$scope.brandVals = []; //ng-model values container for brand filter:
 	$scope.sizeVals = []; //ng-model values container for size filter:
 	$scope.seasonVals = []; //ng-model values container for season filter:
-	$scope.viewClass = "list";
+	$scope.viewClass = "tile";
 	$scope.pageSize = currentPageSize;
 	$scope.selectedPage = 1;
 	$scope.switchQuote = null;
