@@ -177,6 +177,8 @@ angular.module("customDirectives", [])
       scope.goTo = function(a){
         if(a) {
           $location.path("/product/"+a);
+        } else if ($location.path().indexOf("/product") == 0) {
+          return;
         } else {
           $location.path("/shop");
         }

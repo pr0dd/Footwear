@@ -37,8 +37,9 @@ app.config(["$routeProvider", function($routeProvider){
 
 //Constants:
 app.constant("baseUrl", "data/goods.json");
+app.constant("postUrl", "to be defined...");
 app.constant("activeClass", "active");
-app.constant("currentPageSize", 5);
+app.constant("currentPageSize", 9);
 app.constant("mainSlider", [
 	{src: "main_slider_1.jpg", productId: "m01"},
 	{src: "main_slider_2.jpg", productId: "m02"},
@@ -291,13 +292,29 @@ app.controller("checkoutCtrl", ["$scope", "cart", function($scope, cart){
 
 	//Shipping form controller:
 
-app.controller("shippingCtrl", ["$scope", "cart", "$location", function($scope, cart, $location){
-	$scope.cartData = cart.getProducts();
-	$scope.data.shipping = {};//review;
-	$scope.sendOrder = function(){
-		$location.path("/thankyou");
-	}
+app.controller("shippingCtrl", ["$scope", "cart", "$location", "postUrl", "$http", function($scope, cart, $location, postUrl, $http){
+	$scope.data.shipping = {};
 
+	$scope.sendOrder = function (shippingDetails) {
+		//The following commented code should be enabled when appropriate backend is available:
+    
+    // var order = angular.copy(shippingDetails);
+    // order.products = cart.getProducts();
+    // $http.post(orderUrl, order)
+    //     .success(function (data) {
+    //         $scope.data.orderId = data.id;
+    //         cart.getProducts().length = 0;
+    //     })
+    //     .error(function (error) {
+    //         $scope.data.orderError = error;
+    //     }).finally(function () {
+    //         $location.path("/thankyou");
+    //     });
+		
+		//When there's a valid backend, this is to be commented out:
+		cart.getProducts().length = 0;
+		$location.path("/thankyou");
+  }
 }]);
 
 

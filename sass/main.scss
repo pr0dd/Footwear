@@ -24,7 +24,7 @@ ul {
 	min-width:300px;
 	@include bp-medium {width:94%;}
 	@include bp-large {width:60%;}
-	outline: 1px solid black;
+	//outline: 1px solid black;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -949,6 +949,18 @@ footer {
 					color: #eee;
 				}
 			}							
+		}
+	}
+}
+.thanks {
+	text-align: center;
+	div {
+		h2 {
+			color: #141414;
+		}
+		p {
+			color: #444;
+			font-style: italic;
 		}
 	}
 }

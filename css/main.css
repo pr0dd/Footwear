@@ -33,8 +33,7 @@ ul {
   list-style: none; }
 
 .container {
-  min-width: 300px;
-  outline: 1px solid black; }
+  min-width: 300px; }
   @media only screen and (min-width: 601px) {
     .container {
       width: 94%; } }
@@ -983,6 +982,14 @@ footer {
         .shipping-form form .f-button button:hover {
           background: linear-gradient(#C33B21 49%, #E46A52 50%), #E46A52;
           color: #eee; }
+
+.thanks {
+  text-align: center; }
+  .thanks div h2 {
+    color: #141414; }
+  .thanks div p {
+    color: #444;
+    font-style: italic; }
 
 .slider {
   position: relative;
